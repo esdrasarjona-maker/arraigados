@@ -6,7 +6,7 @@
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#EDF0E8",
+  "background_color": "#F4F6EE",
   "theme_color": "#3E6A38",
   "categories": [
     "books",

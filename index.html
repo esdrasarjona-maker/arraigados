@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#14231B">
+<meta name="theme-color" content="#F4F6EE">
 <meta name="description" content="Arraigados: un camino de discipulado bíblico. Gratis y sin ánimo de lucro.">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon-192.png">
@@ -18,9 +18,9 @@
 <style>
 /* Layout: el árbol es la pantalla principal; cada parte abre una hoja a pantalla completa con cabecera ilustrada */
 :root{
-  --bg:#ECEFE6; --surface:#FBFCF8; --surface-2:#E1E7D8;
+  --bg:#F4F6EE; --surface:#FFFFFF; --surface-2:#E8EEDF;
   --ink:#16221A; --muted:#55645A; --line:#CDD5C5;
-  --accent:#3E6A38; --accent-ink:#FFFFFF; --accent-soft:#DCE8D3;
+  --accent:#4C8A44; --accent-ink:#FFFFFF; --accent-soft:#E0EDD6;
   --gold:#A9781E; --gold-soft:#F3E5C0; --danger:#9C3B2C;
   --c-mana:#D99224; --c-palabra:#2F7FB3; --c-oracion:#7A4E93; --c-memoria:#4C8C3A; --c-fruto:#D0573A; --c-fund:#7A5636; --c-roca:#6F6B62; --c-piedras:#A08245; --c-disc:#2E7C78; --c-dicc:#3D4F8F; --c-cree:#6E5A8A; --c-raz:#A2532E;
   --f-display:"Literata", Georgia, "Times New Roman", serif;
@@ -96,16 +96,18 @@ a{color:var(--accent)}
 /* ---------- Hojas ---------- */
 #sheet{position:fixed;inset:0;z-index:40;background:var(--bg);overflow-y:auto;-webkit-overflow-scrolling:touch}
 .sheet-in{max-width:620px;margin:0 auto;padding-left:max(14px,env(safe-area-inset-left,0px));padding-right:max(14px,env(safe-area-inset-right,0px));padding-block:calc(10px + env(safe-area-inset-top,0px)) calc(40px + env(safe-area-inset-bottom,0px))}
-.hero{position:relative;overflow:hidden;border-radius:26px;padding:12px 20px 24px;color:#F3EBD7;background:linear-gradient(165deg,color-mix(in srgb,var(--k) 62%,#0F1A14) 0%,#101B15 78%);margin-bottom:16px;box-shadow:0 16px 36px -24px rgba(0,0,0,.6)}
-.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(90% 70% at 100% 0%,rgba(255,240,200,.16),transparent 60%);pointer-events:none}
-.hero h1{color:#FBF6EA}
+.hero{position:relative;overflow:hidden;border-radius:26px;padding:12px 20px 24px;color:var(--ink);background:linear-gradient(160deg,color-mix(in srgb,var(--k) 26%,var(--surface)) 0%,color-mix(in srgb,var(--k) 9%,var(--surface)) 85%);border:1px solid color-mix(in srgb,var(--k) 22%,transparent);margin-bottom:16px;box-shadow:0 16px 36px -24px rgba(0,0,0,.6)}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(90% 70% at 100% 0%,rgba(255,255,255,.5),transparent 60%);pointer-events:none}
+.hero h1{color:var(--ink)}
 .hero>*{position:relative}
-.hero .back{color:#fff}
-.hero-art{position:absolute;right:-6px;top:26px;width:130px;height:130px;opacity:.22;pointer-events:none}
-.hero .eyebrow{color:rgba(255,255,255,.82);margin-top:18px}
+.hero .back{color:var(--ink)}
+.hero-art{position:absolute;right:-6px;top:26px;width:130px;height:130px;opacity:.5;pointer-events:none;filter:drop-shadow(0 0 0 var(--k))}
+.hero-art svg *{fill:color-mix(in srgb,var(--k) 55%,transparent)!important;stroke:color-mix(in srgb,var(--k) 55%,transparent)!important}
+.hero-art svg text{stroke:none!important}
+.hero .eyebrow{color:color-mix(in srgb,var(--k) 70%,var(--ink));margin-top:18px}
 .hero h1{font-size:2rem;margin-top:4px;max-width:14ch}
-.hero-v{font-family:var(--f-display);font-style:italic;font-size:1.04rem;line-height:1.55;margin-top:14px;max-width:44ch;color:rgba(255,255,255,.95)}
-.hero-ref{margin-top:6px;font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.75)}
+.hero-v{font-family:var(--f-display);font-style:italic;font-size:1.04rem;line-height:1.55;margin-top:14px;max-width:44ch;color:var(--ink)}
+.hero-ref{margin-top:6px;font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 .back{display:inline-flex;align-items:center;gap:4px;background:none;border:0;padding:8px 2px;font-weight:700;color:var(--ink)}
 .back svg{width:20px;height:20px}
 .bar-top{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-block:4px 10px}
@@ -171,8 +173,8 @@ label.lbl{display:block;font-weight:700;margin-bottom:6px}
 .heb{font-family:var(--f-heb)!important}
 .stepbox{background:color-mix(in srgb,var(--k) 12%,var(--surface));border-radius:var(--r);padding:16px}
 .progress{display:flex;gap:4px}
-.progress i{flex:1;height:5px;border-radius:99px;background:rgba(255,255,255,.3)}
-.progress i.on{background:#fff}
+.progress i{flex:1;height:5px;border-radius:99px;background:color-mix(in srgb,var(--k) 22%,transparent)}
+.progress i.on{background:var(--k)}
 .req{display:flex;flex-direction:column;gap:6px;padding:12px 0;border-top:1px solid var(--line)}
 .req:first-child{border-top:0}
 .req-top{display:flex;gap:10px;justify-content:space-between}
@@ -213,11 +215,18 @@ label.lbl{display:block;font-weight:700;margin-bottom:6px}
 .gospel div{display:flex;gap:14px}
 .gospel div::before{counter-increment:g;content:counter(g);flex:none;width:32px;height:32px;border-radius:50%;background:var(--c-roca);color:#fff;display:grid;place-items:center;font-weight:800;font-family:var(--f-display)}
 .center{text-align:center}
+.install{margin-bottom:12px;border-color:color-mix(in srgb,var(--accent) 35%,var(--line))}
+.qrbox{display:grid;place-items:center;min-height:220px;margin-top:12px}.qrbox img,.qrbox canvas{border-radius:12px;max-width:100%}
+.tcv{display:block;width:100%;max-width:360px;margin:0 auto;aspect-ratio:9/16;border-radius:18px;box-shadow:0 14px 30px -18px rgba(0,0,0,.5)}
+.tcv.sq{aspect-ratio:1}
+.swatch{display:inline-flex;align-items:center;gap:6px}.swatch i{width:16px;height:16px;border-radius:50%;border:1px solid var(--line)}
+details.about summary{cursor:pointer}
+.plate.night .expl summary{color:var(--pg)}
 .greet{font-family:var(--f-display);font-size:1.05rem;color:var(--muted);margin:0 2px 10px}
 .brand{color:var(--ink)}
-.plate{position:relative;overflow:hidden;border-radius:28px;background:radial-gradient(120% 60% at 50% 0%,#1D3326 0%,#14231B 55%,#101C15 100%);color:#EFE6CF;box-shadow:0 22px 48px -26px rgba(10,30,15,.75)}
+.plate{position:relative;overflow:hidden;border-radius:28px;color:var(--pi);box-shadow:0 22px 48px -26px rgba(10,30,15,.75)}
 .plate-top{padding:22px 22px 4px}
-.plate-bottom{padding:4px 22px 22px;border-top:1px solid rgba(239,230,207,.12);margin:0 14px;padding-left:8px;padding-right:8px}
+.plate-bottom{padding:4px 22px 22px;border-top:1px solid var(--pl);margin:0 14px;padding-left:8px;padding-right:8px}
 .medcard{display:block;width:100%;text-align:left}
 .plan.cur{border-color:var(--c-palabra);box-shadow:0 0 0 1px var(--c-palabra)}
 .plan h2{font-size:1.2rem}
@@ -229,12 +238,12 @@ label.lbl{display:block;font-weight:700;margin-bottom:6px}
 .growth span{display:block;font-size:.7rem;color:var(--muted);font-weight:700;line-height:1.2}
 .growth em{display:block;font-style:normal;font-size:.7rem;color:var(--muted);margin-top:2px}
 @media (max-width:380px){.growth{grid-template-columns:repeat(2,1fr)}}
-.plate-eyebrow{font-size:.68rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#D9B25F}
-.plate-verse{font-family:var(--f-display);font-style:italic;font-size:1.28rem;line-height:1.5;margin-top:10px;text-wrap:pretty;color:#F6EFDD}
-.plate-ref{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-top:10px;font-size:.74rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#9FB2A0}
+.plate-eyebrow{font-size:.68rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--pg)}
+.plate-verse{font-family:var(--f-display);font-style:italic;font-size:1.28rem;line-height:1.5;margin-top:10px;text-wrap:pretty;color:var(--pi)}
+.plate-ref{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-top:10px;font-size:.74rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--pm)}
 .plate-acts{display:flex;gap:14px;align-items:center;text-transform:none;letter-spacing:0;font-size:.82rem}
-.plate-acts a,.plate-acts button{color:#D9B25F;background:none;border:0;padding:4px 0;font-weight:700;text-decoration:none}
-.plate-acts .ok{color:#9DBB86;font-weight:700}
+.plate-acts a,.plate-acts button{color:var(--pg);background:none;border:0;padding:4px 0;font-weight:700;text-decoration:none}
+.plate-acts .ok{color:var(--pm);font-weight:700}
 .plate .expl{margin-top:10px}
 .plate-svg{display:block;width:100%;height:auto;max-width:100%;aspect-ratio:400/470}
 .plate .tag text{pointer-events:none}
@@ -1206,31 +1215,43 @@ const ART={
 const KC={mana:'--c-mana',palabra:'--c-palabra',oracion:'--c-oracion',memoria:'--c-memoria',fruto:'--c-fruto',fund:'--c-fund',roca:'--c-roca',piedras:'--c-piedras',disc:'--c-disc',dicc:'--c-dicc',cree:'--c-cree',raz:'--c-raz',perfil:'--accent'};
 
 /* ================= LÁMINA DEL ÁRBOL ================= */
-const CREAM='#EFE6CF',SAGE='#9DBB86',GOLD='#D9B25F',MUTE='#9FB2A0',PLATE='#14231B';
+let CREAM,SAGE,GOLD,MUTE,PLATE,PP;
+function tod(){const h=new Date().getHours();return h<6||h>=21?'night':h<9?'dawn':h<19?'day':'dusk';}
+const PAL={
+ day:{bg:'radial-gradient(120% 70% at 20% 0%,#FFF8DF 0%,#F1F5E4 45%,#E0EBD2 100%)',ink:'#2E4A31',leaf:'#78AD5C',gold:'#B98321',mute:'#647864',halo:'#F2F5E6',glow:'#FFE7A3',water:'#4E9CC6',rock1:'#E9E3CF',rock2:'#D6CDB2',rock3:'#F4EFDF',trunk:'#7A5A3A',stone:'#EADFC2',pill:'rgba(255,255,255,.72)',line:'rgba(46,74,49,.14)',sun:'#F2B53A',dark:false},
+ dawn:{bg:'radial-gradient(120% 70% at 15% 0%,#FFE2B8 0%,#F6EEDB 45%,#DDE8D0 100%)',ink:'#344B36',leaf:'#79AB5E',gold:'#B97A1F',mute:'#6E7766',halo:'#F5EEDD',glow:'#FFC983',water:'#5A9FC4',rock1:'#EBE1CB',rock2:'#D8CAAC',rock3:'#F5ECDA',trunk:'#7A5A3A',stone:'#ECDDBC',pill:'rgba(255,255,255,.7)',line:'rgba(52,75,54,.14)',sun:'#F29A3A',dark:false},
+ dusk:{bg:'radial-gradient(120% 70% at 80% 0%,#FAD3B0 0%,#EFE2CF 45%,#D6DDC5 100%)',ink:'#3B4634',leaf:'#7AA35C',gold:'#B5701E',mute:'#6F7262',halo:'#F2E6D6',glow:'#FFB27E',water:'#5D93B8',rock1:'#E7DBC6',rock2:'#D1C1A4',rock3:'#F2E6D3',trunk:'#76563A',stone:'#E7D5B5',pill:'rgba(255,255,255,.66)',line:'rgba(59,70,52,.15)',sun:'#E8813C',dark:false},
+ night:{bg:'radial-gradient(120% 60% at 50% 0%,#2A4A35 0%,#1C3326 55%,#152519 100%)',ink:'#EFE6CF',leaf:'#A5C98C',gold:'#E2BC66',mute:'#A9BCA9',halo:'#1C3326',glow:'#8EA3DE',water:'#93C6DE',rock1:'#32493A',rock2:'#22362A',rock3:'#2A4032',trunk:'#2A4232',stone:'#34503D',pill:'rgba(255,255,255,.08)',line:'rgba(239,230,207,.16)',sun:'#F3E2A8',dark:true}};
+function setPal(){PP=PAL[tod()];CREAM=PP.ink;SAGE=PP.leaf;GOLD=PP.gold;MUTE=PP.mute;PLATE=PP.halo;}
+setPal();
 function gm(){return S.group?MEMBERS.filter(m=>m.group===S.group):[];}
 function discCount(){return DB?MEMBERS.filter(m=>m.mentor===UID).length:(S.disciples||[]).length;}
 function ann(nx,ny,side,ly,cap,val,go,pend){
-  const lx=side==='l'?16:384,anchor=side==='l'?'start':'end',ex=side==='l'?104:296;
-  let s='<g class="tag" data-a="go" data-id="'+go+'" role="button" tabindex="0" aria-label="'+esc(cap+': '+val)+'">';
-  if(nx!=null)s+='<path d="M'+f1(nx)+' '+f1(ny)+' L'+ex+' '+f1(ly-4)+' L'+(side==='l'?ex-6:ex+6)+' '+f1(ly-4)+'" stroke="'+CREAM+'" stroke-opacity=".32" stroke-width=".8" fill="none"/>';
-  s+='<rect x="'+(side==='l'?lx-6:lx-92)+'" y="'+f1(ly-14)+'" width="98" height="40" fill="transparent"/>';
-  s+='<text x="'+lx+'" y="'+f1(ly)+'" text-anchor="'+anchor+'" font-family="Figtree, system-ui, sans-serif" font-size="9" font-weight="800" letter-spacing="1.4" fill="'+(pend?GOLD:MUTE)+'" paint-order="stroke" stroke="'+PLATE+'" stroke-width="3">'+esc(cap)+'</text>';
-  s+='<text x="'+lx+'" y="'+f1(ly+17)+'" text-anchor="'+anchor+'" font-family="Literata, Georgia, serif" font-size="15" fill="'+CREAM+'" paint-order="stroke" stroke="'+PLATE+'" stroke-width="3">'+esc(val)+'</text></g>';
-  if(nx!=null)s+='<circle cx="'+f1(nx)+'" cy="'+f1(ny)+'" r="3.2" fill="'+GOLD+'"/>'+(pend?'<circle class="ring" cx="'+f1(nx)+'" cy="'+f1(ny)+'" r="3.2" fill="none" stroke="'+GOLD+'" stroke-width="1.4"/>':'');
+  const cw=cap.length*6.6+10,vw=val.length*8.1,w=Math.min(118,Math.max(cw,vw)+30),h=44;
+  const x0=side==='l'?8:392-w,y0=ly-16,ax=side==='l'?x0+w:x0;
+  let s='';
+  if(nx!=null)s+='<path d="M'+f1(nx)+' '+f1(ny)+' L'+f1(ax)+' '+f1(y0+h/2)+'" stroke="'+CREAM+'" stroke-opacity=".3" stroke-width=".9" fill="none"/>';
+  s+='<g class="tag" data-a="go" data-id="'+go+'" role="button" tabindex="0" aria-label="'+esc(cap+': '+val)+'">';
+  s+='<rect x="'+f1(x0)+'" y="'+f1(y0)+'" width="'+f1(w)+'" height="'+h+'" rx="14" fill="'+PP.pill+'" stroke="'+(pend?GOLD:PP.line)+'" stroke-width="'+(pend?1.3:1)+'"/>';
+  s+='<text x="'+f1(x0+12)+'" y="'+f1(y0+17)+'" font-family="Figtree, system-ui, sans-serif" font-size="9.5" font-weight="800" letter-spacing="1.2" fill="'+(pend?GOLD:MUTE)+'">'+esc(cap)+'</text>';
+  s+='<text x="'+f1(x0+12)+'" y="'+f1(y0+35)+'" font-family="Literata, Georgia, serif" font-size="14.5" font-weight="600" fill="'+CREAM+'">'+esc(val)+'</text>';
+  s+='<path d="M'+f1(x0+w-14)+' '+f1(y0+h/2-4)+' l4 4 -4 4" stroke="'+CREAM+'" stroke-opacity=".55" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>';
+  if(nx!=null)s+='<circle cx="'+f1(nx)+'" cy="'+f1(ny)+'" r="3.4" fill="'+GOLD+'"/>'+(pend?'<circle class="ring" cx="'+f1(nx)+'" cy="'+f1(ny)+'" r="3.4" fill="none" stroke="'+GOLD+'" stroke-width="1.4"/>':'');
   return s;
 }
-let plateAnimated=false;
+let plateAnimated=false;let lastGrow=0;let growSoon=false;
 function plate(){
+  setPal();
   const L=lessonsDone(),V=learned(),A=totalActive(),sg=stageIdx(),sn=Object.keys(S.stones).length,st=streakInfo();
   const t=today(),d=S.days[t]||{},due=dueVerses().length,nv=Object.keys(S.verses).length,nd=discCount();
-  const hr=new Date().getHours(),glow=hr<6||hr>=21?'#6F86C9':hr<10?'#E9B868':hr<18?'#CFE3B0':'#E59A6A';
+  const glow=PP.glow;
   const R=mulberry(13),G=330,cx=200;
   let o='<svg viewBox="0 0 400 470" class="plate-svg'+(plateAnimated?'':' grow')+'" role="group" aria-label="Tu árbol. Toca cada parte para abrirla.">';
   o+='<defs><radialGradient id="pglow" cx=".15" cy=".02" r=".95"><stop offset="0" stop-color="'+glow+'" stop-opacity=".42"/><stop offset=".6" stop-color="'+glow+'" stop-opacity=".05"/><stop offset="1" stop-color="'+glow+'" stop-opacity="0"/></radialGradient></defs>';
   o+='<rect width="400" height="470" fill="url(#pglow)"/>';
   for(let i=0;i<12;i++)o+='<circle class="mote" style="animation-delay:-'+f1(R()*14)+'s;animation-duration:'+f1(12+R()*10)+'s" cx="'+f1(40+R()*320)+'" cy="'+f1(60+R()*260)+'" r="'+f1(.7+R()*1.1)+'" fill="'+GOLD+'" opacity=".55"/>';
   // sol del maná
-  o+='<g><circle cx="40" cy="38" r="7.5" fill="'+GOLD+'" fill-opacity=".25" stroke="'+GOLD+'" stroke-width="1.1"/>';
+  o+='<g><circle cx="40" cy="38" r="8" fill="'+PP.sun+'" fill-opacity="'+(PP.dark?.35:.85)+'" stroke="'+GOLD+'" stroke-width="1.1"/>';
   for(let i=0;i<12;i++){const a=i*Math.PI/6;o+='<line x1="'+f1(40+Math.cos(a)*11)+'" y1="'+f1(38+Math.sin(a)*11)+'" x2="'+f1(40+Math.cos(a)*(i%2?13.5:15.5))+'" y2="'+f1(38+Math.sin(a)*(i%2?13.5:15.5))+'" stroke="'+GOLD+'" stroke-width=".9" stroke-linecap="round" opacity=".75"/>';}
   o+='</g>';
   // suelo
@@ -1238,7 +1259,7 @@ function plate(){
   for(let x=30;x<372;x+=7+R()*7){const h=2+R()*5;o+='<path d="M'+f1(x)+' '+G+' l'+f1(R()*2-1)+' -'+f1(h)+'" stroke="'+CREAM+'" stroke-opacity=".35" stroke-width=".7"/>';}
   for(let i=0;i<30;i++)o+='<circle cx="'+f1(30+R()*340)+'" cy="'+f1(G+12+R()*120)+'" r=".7" fill="'+CREAM+'" opacity=".18"/>';
   // aguas (Salmo 1:3; Jeremías 17:8)
-  for(let i=0;i<3;i++){const y=G+14+i*9,x0=300+i*6;o+='<path class="flow" d="M'+x0+' '+y+' q 7 -4 14 0 t 14 0 t 14 0 t 14 0 t 14 0" stroke="#8FC1D8" stroke-opacity="'+(.75-i*.18)+'" stroke-width="1.1" fill="none" stroke-dasharray="10 6"/>';}
+  for(let i=0;i<3;i++){const y=G+14+i*9,x0=300+i*6;o+='<path class="flow" d="M'+x0+' '+y+' q 7 -4 14 0 t 14 0 t 14 0 t 14 0 t 14 0" stroke="'+PP.water+'" stroke-opacity="'+(.75-i*.18)+'" stroke-width="1.1" fill="none" stroke-dasharray="10 6"/>';}
   // raíces: una por lección
   const ends=[[152,378],[250,376],[118,404],[284,404],[130,440],[272,444],[86,372],[318,376],[104,462],[300,460],[332,350]];
   ends.forEach((e,i)=>{
@@ -1247,12 +1268,12 @@ function plate(){
     if(g)o+='<path d="M'+e[0]+' '+e[1]+' q '+(e[0]<cx?-7:7)+' 4 '+(e[0]<cx?-10:10)+' 10" stroke="'+CREAM+'" stroke-opacity=".6" stroke-width=".7" fill="none"/>';
   });
   // la piedra angular (Efesios 2:20)
-  o+='<g stroke="'+GOLD+'" stroke-width="1.2" stroke-linejoin="round"><path d="M164 380 L176 370 L248 370 L236 380Z" fill="#2B3E31"/><path d="M236 380 L248 370 L248 410 L236 420Z" fill="#1A2A20"/><rect x="164" y="380" width="72" height="40" fill="#223429"/></g>';
+  o+='<g stroke="'+GOLD+'" stroke-width="1.2" stroke-linejoin="round"><path d="M164 380 L176 370 L248 370 L236 380Z" fill="'+PP.rock1+'"/><path d="M236 380 L248 370 L248 410 L236 420Z" fill="'+PP.rock2+'"/><rect x="164" y="380" width="72" height="40" fill="'+PP.rock3+'"/></g>';
   o+='<path d="M200 387 V413 M190 396 H210" stroke="'+GOLD+'" stroke-width="1.6" stroke-linecap="round"/>';
   // piedras de memorial (Josué 4)
   const kx=124,rows=[4,3,3,2];let pl=0;
   if(!sn)o+='<ellipse cx="'+kx+'" cy="'+(G-4)+'" rx="8" ry="4.5" fill="none" stroke="'+CREAM+'" stroke-opacity=".4" stroke-dasharray="2 2"/>';
-  rows.forEach((n,r)=>{for(let i=0;i<n&&pl<sn;i++,pl++){const x=kx+(i-(n-1)/2)*13+(r%2?2:0),y=G-4-r*7.5;o+='<ellipse cx="'+f1(x)+'" cy="'+f1(y)+'" rx="6.6" ry="4.3" fill="#2E4234" stroke="'+GOLD+'" stroke-width=".9"/>';}});
+  rows.forEach((n,r)=>{for(let i=0;i<n&&pl<sn;i++,pl++){const x=kx+(i-(n-1)/2)*13+(r%2?2:0),y=G-4-r*7.5;o+='<ellipse cx="'+f1(x)+'" cy="'+f1(y)+'" rx="6.6" ry="4.3" fill="'+PP.stone+'" stroke="'+GOLD+'" stroke-width=".9"/>';}});
   // discípulos: brotes plantados (Mateo 28:19)
   const sx=[268,288,250,306];
   for(let i=0;i<Math.max(1,Math.min(4,nd));i++){const x=sx[i],on=i<nd;
@@ -1270,12 +1291,12 @@ function plate(){
   }
   branch(cx,T+6,-3,len,4.4,dep);branch(cx,T+5,-33,len*.86,3.8,dep);branch(cx,T+5,31,len*.86,3.8,dep);
   branch(cx-1,T+Ht*.3,-58,len*.8,3.2,Math.max(1,dep-1));branch(cx+1,T+Ht*.24,54,len*.8,3.2,Math.max(1,dep-1));
-  const trunk='<path d="M'+(cx-11)+' '+G+' C '+(cx-7)+' '+f1(G-Ht*.35)+', '+(cx-6)+' '+f1(G-Ht*.7)+', '+(cx-3)+' '+f1(T)+' L '+(cx+3)+' '+f1(T)+' C '+(cx+6)+' '+f1(G-Ht*.7)+', '+(cx+7)+' '+f1(G-Ht*.35)+', '+(cx+11)+' '+G+'" fill="#1C2E24" stroke="'+CREAM+'" stroke-width="1.3" stroke-linejoin="round"/>'+
+  const trunk='<path d="M'+(cx-11)+' '+G+' C '+(cx-7)+' '+f1(G-Ht*.35)+', '+(cx-6)+' '+f1(G-Ht*.7)+', '+(cx-3)+' '+f1(T)+' L '+(cx+3)+' '+f1(T)+' C '+(cx+6)+' '+f1(G-Ht*.7)+', '+(cx+7)+' '+f1(G-Ht*.35)+', '+(cx+11)+' '+G+'" fill="'+PP.trunk+'" stroke="'+CREAM+'" stroke-width="1.3" stroke-linejoin="round"/>'+
     [.2,.45,.7].map((p,i)=>'<path d="M'+(cx-3+i*2)+' '+f1(G-Ht*p)+' q 2 -8 0 -16" stroke="'+CREAM+'" stroke-opacity=".35" stroke-width=".7" fill="none"/>').join('');
   const nLeaf=Math.min(260,40+V*10+Math.floor(A*1.6)+L*6);
   let leaves='';
   for(let i=0;i<nLeaf;i++){const tp=tips[i%tips.length],a=R()*Math.PI*2,r=Math.sqrt(R())*18,x=tp[0]+Math.cos(a)*r,y=tp[1]+Math.sin(a)*r*.8,sc=1+R()*.8,rot=Math.floor(R()*360);
-    leaves+='<g class="lf" style="animation-delay:'+(300+i*9)+'ms"><path transform="translate('+f1(x)+' '+f1(y)+') rotate('+rot+') scale('+f1(sc)+')" d="M0 0C3-3.4 8.6-3.4 12 0C8.6 3.4 3 3.4 0 0Z" fill="'+SAGE+'" fill-opacity="'+f1(.22+R()*.38)+'" stroke="'+CREAM+'" stroke-opacity=".7" stroke-width=".6"/></g>';}
+    leaves+='<g class="lf" style="animation-delay:'+(300+i*9)+'ms"><path transform="translate('+f1(x)+' '+f1(y)+') rotate('+rot+') scale('+f1(sc)+')" d="M0 0C3-3.4 8.6-3.4 12 0C8.6 3.4 3 3.4 0 0Z" fill="'+SAGE+'" fill-opacity="'+f1((PP.dark?.22:.45)+R()*.4)+'" stroke="'+CREAM+'" stroke-opacity="'+(PP.dark?.7:.45)+'" stroke-width=".6"/></g>';}
   let minX=400,maxX=0,minY=470,maxY=0;tips.forEach(([x,y])=>{minX=Math.min(minX,x);maxX=Math.max(maxX,x);minY=Math.min(minY,y);maxY=Math.max(maxY,y);});
   const nf=Math.min(9,Math.floor(A/3)+Math.min(3,L)+Math.floor(lessons2Done()/2));let fr='',fx=null,fy=null;
   const leftTips=tips.filter(p=>p[0]<cx).sort((a,b)=>a[0]-b[0]);
@@ -1299,15 +1320,15 @@ function plate(){
   const memLy=Math.max(40,Math.min(150,memTip[1]-6));
   const disLy=Math.max(G-22,memLy+46),palLy=Math.max(G+48,disLy+46);
   const fruLy=Math.max(110,Math.min(210,fy)),oraY=G-Ht*.45,oraLy=Math.max(oraY,fruLy+46),pieLy=Math.max(G-6,oraLy+46),raiLy=Math.max(408,pieLy+46);
-  o+='<g class="tag" data-a="go" data-id="mana" role="button" tabindex="0" aria-label="Maná: '+st.n+' días"><text x="62" y="34" font-family="Figtree, system-ui, sans-serif" font-size="9" font-weight="800" letter-spacing="1.4" fill="'+(st.todayDone?MUTE:GOLD)+'">MANÁ</text><text x="62" y="51" font-family="Literata, Georgia, serif" font-size="15" fill="'+CREAM+'">'+st.n+(st.n===1?' día':' días')+'</text></g>';
+  o+='<g class="tag" data-a="go" data-id="mana" role="button" tabindex="0" aria-label="Maná: '+st.n+' días"><rect x="16" y="14" width="124" height="48" rx="16" fill="'+PP.pill+'" stroke="'+(st.todayDone?PP.line:GOLD)+'"/><circle cx="40" cy="38" r="8" fill="'+PP.sun+'" fill-opacity="'+(PP.dark?.35:.85)+'" stroke="'+GOLD+'" stroke-width="1.1"/><text x="58" y="33" font-family="Figtree, system-ui, sans-serif" font-size="9.5" font-weight="800" letter-spacing="1.2" fill="'+(st.todayDone?MUTE:GOLD)+'">MANÁ</text><text x="58" y="51" font-family="Literata, Georgia, serif" font-size="14.5" font-weight="600" fill="'+CREAM+'">'+st.n+(st.n===1?' día':' días')+'</text></g>';
   o+=ann(memTip[0],memTip[1],'r',memLy,'MEMORIA',nv?(nv+(nv===1?' versículo':' versículos')):'Empieza','memoria',due>0||nv===0);
-  o+=ann(fx,fy,'l',fruLy,'FRUTO',STAGES[sg].n,'fruto',false);
+  o+=ann(fx,fy,'l',fruLy,'FRUTO · ETAPA',STAGES[sg].n,'fruto',false);
   o+=ann(cx-4,oraY,'l',oraLy,'ORACIÓN',d.pray?'Hecha hoy':'Pendiente','oracion',!d.pray);
   o+=ann(kx,G-8,'l',pieLy,'PIEDRAS',sn+' de 12','piedras',false);
   o+=ann(sx[0],G-10,'r',disLy,'DISCÍPULOS',nd?String(nd):'Haz discípulos','disc',false);
   o+=ann(330,G+18,'r',palLy,'PALABRA',reading?(reading.length>16?reading.slice(0,15)+'…':reading):'Plan completo','palabra',!readDone);
   o+=ann(ends[2][0],ends[2][1],'l',raiLy,'RAÍCES',L+' de '+LESSONS.length,'fund',!!LESSONS.find(l=>!S.lessons[l.id])&&!d.lesson);
-  o+='<g class="tag" data-a="go" data-id="roca" role="button" tabindex="0" aria-label="Cristo, la Roca"><text x="200" y="446" text-anchor="middle" font-family="Figtree, system-ui, sans-serif" font-size="9" font-weight="800" letter-spacing="1.6" fill="'+GOLD+'">CRISTO, LA PIEDRA ANGULAR</text></g>';
+  o+='<g class="tag" data-a="go" data-id="roca" role="button" tabindex="0" aria-label="Cristo, la Roca"><rect x="96" y="430" width="208" height="26" rx="13" fill="'+PP.pill+'" stroke="'+PP.line+'"/><text x="200" y="447" text-anchor="middle" font-family="Figtree, system-ui, sans-serif" font-size="9.5" font-weight="800" letter-spacing="1.5" fill="'+GOLD+'">CRISTO, LA PIEDRA ANGULAR</text></g>';
   return o+'</svg>';
 }
 
@@ -1322,17 +1343,18 @@ function renderHome(){
   const dateS=new Intl.DateTimeFormat('es-ES',{weekday:'long',day:'numeric',month:'long'}).format(new Date());
   const row=(id,k,ic,t,s,done)=>'<button class="drow" style="--k:var('+KC[k]+')" data-a="go" data-id="'+id+'"><span class="dring'+(done?' done':'')+'">'+(done?I.check:ic)+'</span><span class="drow-b"><b>'+t+'</b><span>'+s+'</span></span>'+I.chev+'</button>';
   const an=ANIMOS[0];
-  setTimeout(()=>{plateAnimated=true;},50);
+  if($('#sheet').hidden)setTimeout(()=>{plateAnimated=true;lastGrow=Date.now();},60);
   $('#home').innerHTML=`
   <header class="top"><div class="brand">${logo(26)}Arraigados</div><button class="iconbtn" data-a="go" data-id="perfil" aria-label="Tu perfil">${I.user}</button></header>
+  ${installCard()}
   <p class="greet">${greeting()}${S.name?', '+esc(S.name):''}</p>
-  <section class="plate">
+  <section class="plate${PP.dark?' night':''}" style="background:${PP.bg};--pi:${PP.ink};--pg:${PP.gold};--pm:${PP.mute};--pl:${PP.line}">
     ${plate()}
     <div class="plate-top plate-bottom">
       <div class="plate-eyebrow">Palabra de hoy · ${dateS}</div>
       <p class="plate-verse">${esc(vText(vid))}</p>
-      <div class="plate-ref"><span>${V.ref}</span><span class="plate-acts"><a href="${bg(V.ref)}" target="_blank" rel="noopener">Leer contexto</a>${inMem?'<span class="ok">En tu memoria</span>':'<button data-a="add-verse" data-id="'+vid+'">Memorizar</button>'}</span></div>
-      ${explain(V.ref,vText(vid),true)}
+      <div class="plate-ref"><span>${V.ref}</span><span class="plate-acts">${canSpeak()?'<button data-a="speak" data-id="'+vid+'">Escuchar</button>':''}<a href="${bg(V.ref)}" target="_blank" rel="noopener">Contexto</a>${inMem?'<span class="ok">En tu memoria</span>':'<button data-a="add-verse" data-id="'+vid+'">Memorizar</button>'}</span></div>
+      ${explain(V.ref,vText(vid),PP.dark)}
     </div>
     
   </section>
@@ -1349,9 +1371,9 @@ function renderHome(){
   ${groupCard()}
   <section class="explore">
     <div class="eyebrow" style="margin:0 2px 8px">Profundiza</div>
-    ${[['fund','fund',I.root,'Sendas de discipulado',lessonsDone()+'/'+LESSONS.length+' raíces · '+lessons2Done()+'/'+LESSONS2.length+' ramas'],['diario','fund',I.pen,'Mi diario','Cómo vas creciendo'],['planes','palabra',I.book,'Planes de lectura',esc(curPlan().t)],['cree','cree',I.book,'Lo que creemos','Por gracia, por la fe, en Cristo'],['raz','raz',I.shield,'Razones para creer','Historia, resurrección, ciencia'],['dicc','dicc',I.aleph,'Diccionario bíblico',Object.keys(WORDS).length+' palabras originales'],['piedras','piedras',I.stones,'Piedras de memorial',Object.keys(S.stones).length+' de 12']].map(([id,k,ic,t,s])=>'<button class="xrow" style="--k:var('+KC[k]+')" data-a="go" data-id="'+id+'"><span class="xic">'+ic+'</span><span class="drow-b"><b>'+t+'</b><span>'+s+'</span></span>'+I.chev+'</button>').join('')}
+    ${[['fund','fund',I.root,'Sendas de discipulado',lessonsDone()+'/'+LESSONS.length+' raíces · '+lessons2Done()+'/'+LESSONS2.length+' ramas'],['diario','fund',I.pen,'Mi diario','Cómo vas creciendo'],['compartir','disc',I.people,'Compartir la app','Enlace, QR e imágenes para estados'],['planes','palabra',I.book,'Planes de lectura',esc(curPlan().t)],['cree','cree',I.book,'Lo que creemos','Por gracia, por la fe, en Cristo'],['raz','raz',I.shield,'Razones para creer','Historia, resurrección, ciencia'],['dicc','dicc',I.aleph,'Diccionario bíblico',Object.keys(WORDS).length+' palabras originales'],['piedras','piedras',I.stones,'Piedras de memorial',Object.keys(S.stones).length+' de 12']].map(([id,k,ic,t,s])=>'<button class="xrow" style="--k:var('+KC[k]+')" data-a="go" data-id="'+id+'"><span class="xic">'+ic+'</span><span class="drow-b"><b>'+t+'</b><span>'+s+'</span></span>'+I.chev+'</button>').join('')}
   </section>
-  <p class="foot">Nada de esto mide tu valor ante Dios. Es una forma de recordar lo que Él está haciendo en ti.</p>`;
+  <p class="foot">La Biblia es lo primero. Esta app no sustituye nada: solo quiere ayudarte a buscar a Dios. <button class="linkbtn" data-a="go" data-id="acerca">Leer más</button></p>`;
 }
 function groupCard(){
   if(DB&&gm().length){
@@ -1435,12 +1457,12 @@ async function initCloud(){
 let stack=[];
 function push(fn){stack.push(fn);draw(true);}
 function back(){stack.pop();if(stack.length)draw(true);else closeAll();}
-function closeAll(){stack=[];const s=$('#sheet');s.hidden=true;s.innerHTML='';document.body.style.overflow='';renderHome();}
+function closeAll(){if(Date.now()-lastGrow>20*60e3||growSoon){plateAnimated=false;growSoon=false;}stack=[];const s=$('#sheet');s.hidden=true;s.innerHTML='';document.body.style.overflow='';renderHome();}
 function draw(top){const s=$('#sheet');const y=s.scrollTop;s.innerHTML='<div class="sheet-in'+(top?' fade':'')+'">'+stack[stack.length-1]()+'</div>';s.hidden=false;document.body.style.overflow='hidden';s.scrollTop=top?0:y;}
 function refresh(){if(stack.length)draw(false);renderHome();}
 function hero(k,eyebrow,title,vid,vref,vtxt){
   const txt=vtxt||(vid?vText(vid):'');
-  return '<div class="hero" style="--k:var('+KC[k]+')"><button class="back" data-a="back">'+I.back+(stack.length>1?'Atrás':'Árbol')+'</button><div class="hero-art">'+ART[k]+'</div><div class="eyebrow">'+eyebrow+'</div><h1>'+title+'</h1>'+(txt?'<p class="hero-v">'+esc(txt)+'</p><p class="hero-ref">'+(vref||VERSES[vid].ref)+(vid?' · '+vLabel(vid):' · RV1909')+'</p>'+explain(vref||VERSES[vid].ref,txt,true):'')+'</div>';
+  return '<div class="hero" style="--k:var('+KC[k]+')"><button class="back" data-a="back">'+I.back+(stack.length>1?'Atrás':'Árbol')+'</button><div class="hero-art">'+ART[k]+'</div><div class="eyebrow">'+eyebrow+'</div><h1>'+title+'</h1>'+(txt?'<p class="hero-v">'+esc(txt)+'</p><p class="hero-ref">'+(vref||VERSES[vid].ref)+(vid?' · '+vLabel(vid):' · RV1909')+'</p>'+explain(vref||VERSES[vid].ref,txt,false):'')+'</div>';
 }
 const bar=(label,right)=>'<div class="bar-top"><button class="back" data-a="back">'+I.back+label+'</button><span class="eyebrow">'+(right||'')+'</span></div>';
 const rowBtn=(a,id,k,done,t,s)=>'<button class="row" style="--k:var('+KC[k]+')" data-a="'+a+'" data-id="'+id+'"><span class="tick'+(done?' done':'')+'">'+(done?I.check:'')+'</span><span class="row-b"><span class="row-t">'+t+'</span><br><span class="small muted">'+s+'</span></span>'+I.chev+'</button>';
@@ -1567,11 +1589,11 @@ function sOracion(){
 let prayStep=0,prayMode='pn';
 function sPray(){
   const PP=prayMode==='acas'?PRAYER2:PRAYER,p=PP[prayStep],last=prayStep===PP.length-1,pend=S.prayers.filter(x=>!x.answered);
-  return '<div class="hero" style="--k:var(--c-oracion);min-height:62vh;display:flex;flex-direction:column"><div class="bar-top" style="padding:0"><button class="back" data-a="back">'+I.back+'Salir</button><span class="eyebrow" style="color:rgba(255,255,255,.8);margin:0">'+(prayStep+1)+' de '+PP.length+'</span></div>'+
+  return '<div class="hero" style="--k:var(--c-oracion);min-height:62vh;display:flex;flex-direction:column"><div class="bar-top" style="padding:0"><button class="back" data-a="back">'+I.back+'Salir</button><span class="eyebrow" style="margin:0">'+(prayStep+1)+' de '+PP.length+'</span></div>'+
    '<div class="progress" style="margin-top:6px">'+PP.map((_,i)=>'<i class="'+(i<=prayStep?'on':'')+'"></i>').join('')+'</div>'+
    '<div class="eyebrow" style="margin-top:30px">'+p.t+'</div><p style="font-family:var(--f-display);font-style:italic;font-size:1.75rem;line-height:1.35;margin-top:10px;text-wrap:balance">'+esc(p.f)+'</p><p class="hero-ref">'+(prayMode==='acas'?p.ref:'Mateo 6:9-13 · RV1909')+'</p>'+
    '<p style="margin-top:22px;font-size:1.05rem;line-height:1.65">'+esc(p.g)+'</p><p style="margin-top:12px;opacity:.85">'+esc(p.p)+'</p>'+
-   (p.req&&DB&&PETS.some(x=>x.by!==UID&&!x.answered&&(!S.group||x.group===S.group))?'<div style="margin-top:12px;background:rgba(255,255,255,.1);border-radius:14px;padding:12px 14px"><div class="eyebrow" style="margin:0 0 6px">Tu grupo</div>'+PETS.filter(x=>x.by!==UID&&!x.answered&&(!S.group||x.group===S.group)).map(x=>'<p>· '+esc((x.name||'')+': '+x.t)+'</p>').join('')+'</div>':'')+(p.req&&pend.length?'<div style="margin-top:16px;background:rgba(255,255,255,.14);border-radius:14px;padding:12px 14px">'+pend.map(x=>'<p>· '+esc(x.t)+'</p>').join('')+'</div>':'')+'</div>'+
+   (p.req&&DB&&PETS.some(x=>x.by!==UID&&!x.answered&&(!S.group||x.group===S.group))?'<div style="margin-top:12px;background:color-mix(in srgb,var(--k) 12%,transparent);border-radius:14px;padding:12px 14px"><div class="eyebrow" style="margin:0 0 6px">Tu grupo</div>'+PETS.filter(x=>x.by!==UID&&!x.answered&&(!S.group||x.group===S.group)).map(x=>'<p>· '+esc((x.name||'')+': '+x.t)+'</p>').join('')+'</div>':'')+(p.req&&pend.length?'<div style="margin-top:16px;background:color-mix(in srgb,var(--k) 12%,transparent);border-radius:14px;padding:12px 14px">'+pend.map(x=>'<p>· '+esc(x.t)+'</p>').join('')+'</div>':'')+'</div>'+
    '<p class="small muted center">Tómate tu tiempo. Habla con Dios con tus palabras antes de seguir.</p>'+
    '<div class="btn-row" style="margin-top:14px;--k:var(--c-oracion)">'+(prayStep>0?'<button class="btn ghost" data-a="pray-prev">Atrás</button>':'')+'<button class="btn" data-a="'+(last?'pray-done':'pray-next')+'">'+(last?'Amén':'Siguiente')+'</button></div>';
 }
@@ -1618,7 +1640,7 @@ function sPractice(){
   const id=pq[pi],V=VERSES[id],v=S.verses[id];
   return bar('Salir',(pi+1)+' de '+pq.length)+`<div style="--k:var(--c-memoria)"><div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><h1 style="font-size:1.9rem">${V.ref}</h1>${lvlDots(v.lvl)}</div>
    <div class="seg" style="margin-top:14px">${[['texto','Texto'],['pistas','Pistas'],['huecos','Huecos']].map(([m,l])=>'<button data-a="pmode" data-id="'+m+'" class="'+(pmode===m?'on':'')+'">'+l+'</button>').join('')}</div>
-   <div class="card" style="margin-top:14px"><p class="recite">${wordsHTML(vText(id))}</p></div>
+   <div class="card" style="margin-top:14px"><p class="recite">${wordsHTML(vText(id))}</p>${canSpeak()?'<button class="linkbtn small" data-a="speak" data-id="'+id+'">Escuchar el versículo</button>':''}</div>
    <p class="small muted" style="margin-top:10px">${pmode==='texto'?'Léelo en voz alta tres veces, despacio.':pmode==='pistas'?'Recítalo con la primera letra de cada palabra.':'Recítalo entero. Toca un hueco si necesitas verlo.'}</p>
    <div class="btn-row" style="margin-top:20px"><button class="btn ghost" data-a="rate" data-id="0">Necesito repasar</button><button class="btn" data-a="rate" data-id="1">Lo recité bien</button></div></div>`;
 }
@@ -1642,7 +1664,7 @@ function sFund(){
 function sLesson(id){return function(){
   const isB=LESSONS2.some(x=>x.id===id),LL=isB?LESSONS2:LESSONS,i=LL.findIndex(l=>l.id===id),l=LL[i],done=!!S.lessons[id];
   const vt=l.vt||VERSES[l.v].t,mv=VERSES[l.v],inMem=!!S.verses[l.v];
-  return `<div class="hero" style="--k:var(--c-fund)"><button class="back" data-a="back">${I.back}${stack.length>1?'Atrás':'Árbol'}</button><div class="hero-art">${ART.fund}</div><div class="eyebrow">${isB?'Crecer en Cristo':'Fundamentos'} · Lección ${i+1} de ${LL.length} · ${l.s}</div><h1>${l.t}</h1><p class="hero-v">${esc(vt)}</p><p class="hero-ref">${l.ref} · RV1909 · <a href="${bg(l.ref)}" target="_blank" rel="noopener" style="color:#fff">Leer en ${S.version}</a></p>${explain(l.ref,vt,true)}</div>
+  return `<div class="hero" style="--k:var(--c-fund)"><button class="back" data-a="back">${I.back}${stack.length>1?'Atrás':'Árbol'}</button><div class="hero-art">${ART.fund}</div><div class="eyebrow">${isB?'Crecer en Cristo':'Fundamentos'} · Lección ${i+1} de ${LL.length} · ${l.s}</div><h1>${l.t}</h1><p class="hero-v">${esc(vt)}</p><p class="hero-ref">${l.ref} · RV1909 · <a href="${bg(l.ref)}" target="_blank" rel="noopener" style="color:inherit">Leer en ${S.version}</a></p>${explain(l.ref,vt,false)}</div>
   <div class="prose" style="--k:var(--c-fund)">
    ${l.body.map(p=>'<p>'+esc(p)+'</p>').join('')}
    <div><div class="eyebrow" style="margin-bottom:8px">${done?'Palabras descubiertas':'Descubres'}</div><div class="wchips">${l.words.map(w=>{const W=WORDS[w];return '<button class="wchip" data-a="word" data-id="'+w+'"><b class="'+(W.heb?'heb':'')+'">'+W.o+'</b><span class="small">'+W.tr+' · '+esc(W.m.split(':')[0])+'</span></button>';}).join('')}</div></div>
@@ -1754,6 +1776,7 @@ function sDisc(){
       <p class="small muted" style="margin-top:12px">Pablo enseñó a Timoteo, Timoteo a hombres fieles, y ellos a otros. La madurez se ve cuando lo que recibiste lo pasas a otro.</p>
       <label class="lbl small" for="mentorSel" style="margin-top:14px">Mi mentor</label>
       <select id="mentorSel"><option value="">Sin mentor</option>${MEMBERS.filter(m=>m.id!==UID).map(m=>'<option value="'+esc(m.id)+'"'+(S.mentorId===m.id?' selected':'')+'>'+esc(m.name||'Sin nombre')+'</option>').join('')}</select></div>
+     ${meetingCard()}
      <div class="card"><div class="eyebrow">${esc(S.groupName||'Tu grupo')} · ${MEMBERS.length} ${MEMBERS.length===1?'persona':'personas'}</div>
       ${ms.map(m=>{const mine=m.id===UID,isD=m.mentor===UID;return '<div class="dcard"><span class="avatar">'+esc((m.name||'?').slice(0,1).toUpperCase())+'</span><div style="flex:1;min-width:0"><b>'+esc(m.name||'Sin nombre')+(mine?' <span class="muted small">(tú)</span>':'')+(isD?' <span class="pill">Tu discípulo</span>':'')+(m.id===S.mentorId?' <span class="pill">Tu mentor</span>':'')+'</b><div class="small muted">'+STAGES[m.stage||0].n+' · '+(m.streak||0)+' días de maná · '+(m.L||0)+'/11 raíces · '+(m.V||0)+' versículos</div><div class="small muted" style="display:flex;align-items:center;gap:8px;margin-top:2px">'+dots(m)+'<span>Activo '+ago(m)+(m.read?' · leyendo '+esc(m.read):'')+'</span></div></div>'+(mine?'':'<button class="btn soft sm" data-a="animar" data-id="'+esc(m.id)+'">Orar y animar</button>')+'</div>';}).join('')}
       <p class="small muted" style="margin-top:12px">«Orar y animar» le envía un versículo de ánimo y le dice que oras por él. Nadie ve tus oraciones ni tus notas: solo tu progreso.</p></div>
@@ -1780,6 +1803,15 @@ function sDisc(){
     <button class="btn full" style="margin-top:8px" data-a="add-code">Añadir discípulo</button></div></div>`;
 }
 
+function meetingCard(){
+  const wk=Math.floor(dayN()/7),ps=PASAJES[(wk*7+3)%PASAJES.length],vi=VIRTUDES[wk%8];
+  return '<details class="card meet"><summary><div class="eyebrow">Reunión de esta semana</div><h2 style="margin-top:6px">'+esc(ps[1])+'</h2><p class="small muted">'+esc(ps[0])+' · toca para ver la guía</p></summary>'+
+   '<div class="steps4"><div><b>1 · Orad al empezar (5 min)</b><p>Una persona da gracias por la semana y pide que el Espíritu abra vuestro entendimiento.</p></div>'+
+   '<div><b>2 · Leed juntos (10 min)</b><p>Leed '+esc(ps[0])+' en voz alta, dos veces, con lectores distintos. <a href="'+bg(ps[0])+'" target="_blank" rel="noopener">Abrir pasaje</a></p></div>'+
+   '<div><b>3 · Conversad (20 min)</b><p>· ¿Qué nos enseña este pasaje sobre Dios?<br>· ¿Qué nos enseña sobre nosotros?<br>· ¿Qué vamos a obedecer esta semana, en concreto?</p></div>'+
+   '<div><b>4 · Rendid cuentas con cariño (10 min)</b><p>¿Cómo va el maná de cada uno? Repasad la virtud de la semana: <b>'+esc(vi[0])+'</b>. '+esc(vi[2])+'</p></div>'+
+   '<div><b>5 · Orad unos por otros (10 min)</b><p>Usad las peticiones del grupo de la sección Oración. «Orad los unos por los otros» (Santiago 5:16).</p></div></div></details>';
+}
 const ENC=['heb10-24','fil4-6','pr3-5','lam3-22','jn15-5','ro8-1','2co5-17'];
 
 /* --- Perfil --- */
@@ -1794,6 +1826,7 @@ function sPerfil(){
    <div class="card"><div class="eyebrow">Copia de seguridad</div><p class="small" style="margin-top:6px">Todo se guarda solo en este teléfono. Copia este texto y guárdalo para no perder tu camino si cambias de móvil.</p>
     <textarea class="code" id="bkout" readonly style="margin-top:10px">${esc(JSON.stringify(S))}</textarea><button class="btn ghost full" style="margin-top:8px" data-a="copy" data-id="bkout">Copiar copia de seguridad</button>
     <label class="lbl small" for="bkin" style="margin-top:14px">Restaurar</label><textarea class="code" id="bkin" placeholder="Pega aquí tu copia…"></textarea><div id="bkmsg" class="small" style="margin-top:6px"></div><button class="btn ghost full" style="margin-top:8px" data-a="restore">Restaurar</button></div>
+   <div class="btn-row"><button class="btn soft" data-a="go" data-id="acerca">Acerca de Arraigados</button><button class="btn soft" data-a="go" data-id="compartir">Compartir la app</button></div>
    <div class="card"><div class="eyebrow">Sobre Arraigados</div><p class="small" style="margin-top:6px">Gratis, sin anuncios y sin ánimo de lucro: «de gracia recibisteis, dad de gracia» (Mateo 10:8). La Biblia es el fundamento de todo lo que hay aquí. No sustituye a tu iglesia local ni a tus pastores.</p></div>
    <div class="card"><div class="eyebrow">Empezar de cero</div><div id="rst"><button class="btn danger full" style="margin-top:10px" data-a="reset1">Borrar mi progreso</button></div></div></div>`;
 }
@@ -1817,18 +1850,121 @@ function sRazones(){
    <div class="card"><div class="eyebrow">Para profundizar</div><p class="small" style="margin-top:6px">C. S. Lewis, <i>Mero cristianismo</i> · Lee Strobel, <i>El caso de Cristo</i> · Timothy Keller, <i>¿Es razonable creer en Dios?</i></p></div></div>`;
 }
 
-const SEC={planes:sPlanes,meditar:sMeditar,diario:sDiario,cree:sCreemos,raz:sRazones,mana:sMana,palabra:sPalabra,oracion:sOracion,memoria:sMemoria,fund:sFund,dicc:sDicc,roca:sRoca,fruto:sFruto,piedras:sPiedras,disc:sDisc,perfil:sPerfil};
+const SEC={acerca:sAcerca,compartir:sCompartir,tarjetas:sTarjetas,installios:sInstallIOS,planes:sPlanes,meditar:sMeditar,diario:sDiario,cree:sCreemos,raz:sRazones,mana:sMana,palabra:sPalabra,oracion:sOracion,memoria:sMemoria,fund:sFund,dicc:sDicc,roca:sRoca,fruto:sFruto,piedras:sPiedras,disc:sDisc,perfil:sPerfil};
 
 /* ================= BIENVENIDA ================= */
+/* ================= ACERCA DE (texto aclaratorio) ================= */
+const ACERCA=`<div class="card"><div class="eyebrow">Antes de nada</div>
+ <p style="margin-top:8px"><b>La Biblia es lo primero.</b> Arraigados no es la verdad absoluta ni pretende serlo: es un esfuerzo humilde, hecho lo mejor posible, para ayudarte a leer, orar y crecer. Si algo de aquí no encaja con la Escritura, quédate con la Escritura (Hechos 17:11).</p>
+ <p style="margin-top:8px"><b>No sustituye a nada.</b> Ni a tu tiempo personal con Dios, ni a tu iglesia local, ni a tus pastores, ni a la comunión con los hermanos. Solo quiere empujarte hacia ellos (Hebreos 10:24-25).</p>
+ <p style="margin-top:8px"><b>Nada de esto mide tu valor.</b> No eres más salvo ni más amado por usar la app. La salvación es por gracia, por medio de la fe en Cristo (Efesios 2:8-9).</p>
+ <p style="margin-top:8px"><b>Las piedras de memorial no son trofeos.</b> No premian nada ni te hacen mejor que nadie. Son como las piedras del Jordán (Josué 4): sirven para hacer memoria de lo que Dios ha hecho y darle a Él la gloria.</p>
+ <p class="small muted" style="margin-top:10px">Gratis, sin anuncios y sin ánimo de lucro: «de gracia recibisteis, dad de gracia» (Mateo 10:8).</p></div>`;
+function sAcerca(){return hero('perfil','Acerca de Arraigados','Arraigados en Él','col2-6')+'<div class="stack">'+ACERCA+'</div>';}
+
+/* ================= BIENVENIDA (más corta) ================= */
 function sWelcome(){
-  return `<div class="hero" style="--k:var(--accent);padding-top:26px"><div class="hero-art">${ART.memoria}</div><div class="brand" style="color:#fff">${logo(34)}Arraigados</div>
-   <h1 style="margin-top:22px;max-width:16ch">Arraigados y sobreedificados en Cristo</h1><p class="hero-v">${esc(VERSES['col2-6'].t)}</p><p class="hero-ref">Colosenses 2:6-7</p></div>
-  <div class="prose"><p>Un camino de discipulado para crecer, poco a poco, en tu vida con el Señor. Tu vida espiritual es un árbol plantado junto al agua: la Palabra lo riega, la oración lo sostiene y Cristo es la Roca donde se agarran sus raíces.</p>
-   <div class="stepbox" style="--k:var(--accent)"><div class="eyebrow">Antes de empezar</div><p style="margin-top:6px">Nada de lo que hagas aquí te hace más salvo ni más amado por Dios. Eso ya lo hizo Cristo, por gracia. Las rachas y las piedras solo te ayudan a recordar lo que Él hace en ti.</p></div>
-   <div><div class="lbl">¿Dónde estás en tu camino?</div><div class="pathpick"><button type="button" class="pp${S.path==='buscando'?' on':''}" data-a="pickpath" data-id="buscando"><b>Quiero conocer a Jesús</b><span>Tengo preguntas y quiero saber quién es</span></button><button type="button" class="pp${!S.path||S.path==='nuevo'?' on':''}" data-a="pickpath" data-id="nuevo"><b>Soy nuevo en la fe</b><span>Empezar desde el principio, paso a paso</span></button><button type="button" class="pp${S.path==='creyente'?' on':''}" data-a="pickpath" data-id="creyente"><b>Ya conozco a Cristo</b><span>Repasar fundamentos y seguir creciendo</span></button></div></div>
-   <form data-f="onboard" class="stack" style="gap:10px;--k:var(--accent)"><label class="lbl" for="obname">¿Cómo te llamas?</label><input type="text" id="obname" maxlength="40" placeholder="Tu nombre" autocomplete="given-name"><button class="btn full" type="submit">Plantar mi árbol</button></form>
-   <p class="small muted">Tus datos se guardan solo en este teléfono.</p></div>`;
+  return `<div class="hero" style="--k:var(--accent);padding-top:22px"><div class="brand">${logo(32)}Arraigados</div>
+   <h1 style="margin-top:16px;max-width:16ch">Arraigados y sobreedificados en Cristo</h1><p class="hero-ref">Colosenses 2:7</p></div>
+  <div class="stack" style="--k:var(--accent)">
+   <p>Un camino para crecer cada día con el Señor: su Palabra, la oración y la vida en comunidad.</p>
+   <div><div class="lbl">¿Dónde estás en tu camino?</div><div class="pathpick"><button type="button" class="pp${S.path==='buscando'?' on':''}" data-a="pickpath" data-id="buscando"><b>Quiero conocer a Jesús</b><span>Tengo preguntas</span></button><button type="button" class="pp${!S.path||S.path==='nuevo'?' on':''}" data-a="pickpath" data-id="nuevo"><b>Soy nuevo en la fe</b><span>Paso a paso</span></button><button type="button" class="pp${S.path==='creyente'?' on':''}" data-a="pickpath" data-id="creyente"><b>Ya conozco a Cristo</b><span>Seguir creciendo</span></button></div></div>
+   <form data-f="onboard" class="stack" style="gap:10px"><label class="lbl" for="obname">¿Cómo te llamas?</label><input type="text" id="obname" maxlength="40" placeholder="Tu nombre" autocomplete="given-name"><button class="btn full" type="submit">Plantar mi árbol</button></form>
+   <details class="card about"><summary><b>Antes de empezar</b> <span class="muted small">· léelo, es importante</span></summary>${ACERCA.replace('<div class="card">','<div>')}</details>
+   <p class="small muted center">Sin cuentas. Tus datos se guardan solo en tu teléfono.</p></div>`;
 }
+
+/* ================= INSTALAR LA APP ================= */
+let deferredInstall=null;
+const isStandalone=()=>{try{return matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;}catch(e){return false;}};
+const isIOS=()=>/iphone|ipad|ipod/i.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredInstall=e;try{renderHome();}catch(_){}});
+window.addEventListener('appinstalled',()=>{deferredInstall=null;try{renderHome();}catch(_){}});
+function installCard(){
+  if(isStandalone()||!/^https?:$/.test(location.protocol)||window.claude)return '';
+  try{if(localStorage.getItem('arr.hideInstall')===today())return '';}catch(e){}
+  if(!deferredInstall&&!isIOS())return '';
+  return `<div class="card install"><div style="display:flex;gap:12px;align-items:center"><span class="xic" style="--k:var(--accent)">${logo(24)}</span><div style="flex:1;min-width:0"><b>Instala Arraigados en tu móvil</b><p class="small muted">Tendrás el icono en tu pantalla de inicio y funcionará sin internet.</p></div></div>
+   <div class="btn-row" style="margin-top:12px"><button class="btn ghost sm" data-a="hide-install">Ahora no</button><button class="btn sm" data-a="install">${deferredInstall?'Instalar':'Cómo instalar'}</button></div></div>`;
+}
+function sInstallIOS(){return hero('perfil','Instalar en iPhone','Arraigados en tu pantalla de inicio')+`<div class="stack"><div class="card"><div class="steps4">
+ <div><b>1 · Abre en Safari</b><p>Este enlace tiene que estar abierto en Safari, no dentro de WhatsApp o Instagram. Si estás en otra app, pulsa «Abrir en Safari».</p></div>
+ <div><b>2 · Pulsa Compartir</b><p>Es el cuadrado con una flecha hacia arriba, abajo en el centro de la pantalla.</p></div>
+ <div><b>3 · «Añadir a pantalla de inicio»</b><p>Desliza hacia abajo en el menú hasta encontrarlo y pulsa «Añadir».</p></div>
+ <div><b>4 · ¡Listo!</b><p>Abre Arraigados desde el nuevo icono. Funcionará como una app y también sin internet.</p></div></div></div></div>`;}
+
+/* ================= COMPARTIR LA APP (enlace + QR) ================= */
+const APP_URL=()=>/^https?:$/.test(location.protocol)&&!window.claude?location.origin:'https://arraigandonos.netlify.app';
+function loadQR(){return window.QRCode?Promise.resolve():new Promise((ok,ko)=>{const s=document.createElement('script');s.src='https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js';s.onload=ok;s.onerror=ko;document.head.appendChild(s);});}
+function sCompartir(){
+  const url=APP_URL(),inv=S.group?url+'  ·  Código de grupo: '+S.group:url;
+  setTimeout(()=>{loadQR().then(()=>{const el=document.getElementById('qrbox');if(!el)return;el.innerHTML='';new QRCode(el,{text:url,width:220,height:220,colorDark:'#2E4A31',colorLight:'#ffffff'});}).catch(()=>{const el=document.getElementById('qrbox');if(el)el.innerHTML='<p class="small muted">El código QR necesita internet la primera vez.</p>';});},50);
+  return hero('disc','Compartir Arraigados','Id y haced discípulos','mt28-19')+`<div class="stack" style="--k:var(--c-disc)">
+   <div class="card center"><div class="eyebrow">Escanea para abrir</div><div id="qrbox" class="qrbox"></div><p style="margin-top:10px;font-weight:800;word-break:break-all">${esc(url)}</p>
+    <p class="small muted" style="margin-top:6px">Enséñalo en la iglesia o en tu grupo: con la cámara del móvil se abre la app.</p></div>
+   <div class="card"><div class="eyebrow">Enviar por WhatsApp o mensaje</div>
+    <textarea class="code" id="shtxt" readonly style="margin-top:10px;font-family:var(--f-ui);font-size:.88rem;min-height:110px">${esc('Te recomiendo Arraigados, una app gratuita para leer la Biblia, orar y crecer en la fe cada día. Ábrela aquí: '+url+(S.group?'\n\nÚnete a mi grupo de discipulado con el código '+S.group+'.':'')+'\n\n«Arraigados y sobreedificados en él» (Colosenses 2:7)')}</textarea>
+    <div class="btn-row" style="margin-top:10px"><button class="btn soft" data-a="copy" data-id="shtxt">Copiar</button>${navigator.share?'<button class="btn" data-a="native-share">Compartir…</button>':''}</div></div>
+   <button class="card medcard" data-a="go" data-id="tarjetas"><div class="eyebrow">Para tus estados</div><h2 style="margin-top:6px">Comparte un versículo con una imagen bonita</h2><span class="linkbtn small" style="display:inline-block;margin-top:8px">Crear imagen →</span></button></div>`;
+}
+
+/* ================= IMÁGENES PARA ESTADOS ================= */
+const DESIGNS=[
+ {id:'alba',n:'Alba',bg:['#FFF4D6','#F6D9A8'],ink:'#3A2E1A',acc:'#B9781E',font:'Literata'},
+ {id:'jardin',n:'Jardín',bg:['#E8F2DC','#BFD9A8'],ink:'#23402A',acc:'#4C8A44',font:'Literata'},
+ {id:'noche',n:'Noche',bg:['#1F3A2B','#0F1E15'],ink:'#F3EBD7',acc:'#E2BC66',font:'Literata'},
+ {id:'cielo',n:'Cielo',bg:['#DDEEFA','#A9CDE8'],ink:'#18344A',acc:'#2F7FB3',font:'Figtree'},
+ {id:'papiro',n:'Papiro',bg:['#F4ECDD','#E2D3B6'],ink:'#3E3424',acc:'#8A6B3B',font:'Literata'}
+];
+let tDesign='jardin',tVerse=null,tFmt='story';
+function wrapLines(ctx,text,maxW){const words=text.split(/\s+/),lines=[];let l='';for(const w of words){const t=l?l+' '+w:w;if(ctx.measureText(t).width>maxW&&l){lines.push(l);l=w;}else l=t;}if(l)lines.push(l);return lines;}
+function drawCard(cv,vid,did,fmt){
+  const D=DESIGNS.find(d=>d.id===did),V=VERSES[vid],txt=vText(vid),W=1080,H=fmt==='story'?1920:1080;
+  cv.width=W;cv.height=H;const c=cv.getContext('2d');
+  const g=c.createLinearGradient(0,0,W*.4,H);g.addColorStop(0,D.bg[0]);g.addColorStop(1,D.bg[1]);c.fillStyle=g;c.fillRect(0,0,W,H);
+  // árbol sutil
+  c.save();c.globalAlpha=.12;c.strokeStyle=D.ink;c.lineWidth=6;c.lineCap='round';const bx=W/2,by=H-150;
+  c.beginPath();c.moveTo(bx,by);c.lineTo(bx,by-260);c.stroke();
+  [[-1,.9],[1,.9],[-1,.55],[1,.55]].forEach(([s,k])=>{c.beginPath();c.moveTo(bx,by-260*k);c.quadraticCurveTo(bx+s*60,by-260*k-60,bx+s*150,by-260*k-120);c.stroke();});
+  c.beginPath();c.moveTo(bx-260,by);c.lineTo(bx+260,by);c.stroke();
+  [-1,1].forEach(s=>{c.beginPath();c.moveTo(bx,by);c.quadraticCurveTo(bx+s*40,by+60,bx+s*130,by+90);c.stroke();});
+  c.restore();
+  // texto
+  let size=fmt==='story'?(txt.length>220?54:txt.length>140?62:72):(txt.length>200?44:txt.length>120?50:58);
+  c.fillStyle=D.ink;c.textAlign='center';
+  const fam=D.font==='Figtree'?'Figtree, system-ui, sans-serif':'Literata, Georgia, serif';
+  let lines;for(;size>30;size-=2){c.font=(D.font==='Figtree'?'600 ':'italic 500 ')+size+'px '+fam;lines=wrapLines(c,'«'+txt+'»',W-200);if(lines.length*size*1.35<H*(fmt==='story'?.5:.55))break;}
+  const lh=size*1.38,top=H/2-lines.length*lh/2-(fmt==='story'?80:30);
+  lines.forEach((l,i)=>c.fillText(l,W/2,top+i*lh+size));
+  c.fillStyle=D.acc;c.font='800 '+(fmt==='story'?40:32)+'px Figtree, system-ui, sans-serif';
+  const refY=top+lines.length*lh+(fmt==='story'?70:50);c.fillText(V.ref.toUpperCase(),W/2,refY);
+  c.fillRect(W/2-40,refY+26,80,4);
+  c.globalAlpha=.65;c.fillStyle=D.ink;c.font='600 '+(fmt==='story'?30:24)+'px Figtree, system-ui, sans-serif';c.fillText('Arraigados · '+APP_URL().replace(/^https?:\/\//,''),W/2,H-(fmt==='story'?90:50));c.globalAlpha=1;
+}
+function sTarjetas(){
+  if(!tVerse)tVerse=verseOfDay();
+  const mine=Object.keys(S.verses),opts=[...new Set([verseOfDay(),...mine,...Object.keys(VERSES)])];
+  setTimeout(()=>{const cv=document.getElementById('tcv');if(cv)drawCard(cv,tVerse,tDesign,tFmt);},30);
+  return hero('palabra','Imagen para estados','Así alumbre vuestra luz','mt5-16')+`<div class="stack" style="--k:var(--c-palabra)">
+   <div class="card"><label class="lbl" for="tsel">Versículo</label><select id="tsel">${opts.map(v=>'<option value="'+v+'"'+(v===tVerse?' selected':'')+'>'+VERSES[v].ref+(v===verseOfDay()?' (de hoy)':'')+'</option>').join('')}</select>
+    <div class="lbl" style="margin-top:12px">Diseño</div><div class="chips">${DESIGNS.map(d=>'<button class="chip swatch'+(tDesign===d.id?' on':'')+'" data-a="tdesign" data-id="'+d.id+'"><i style="background:linear-gradient(135deg,'+d.bg[0]+','+d.bg[1]+')"></i>'+d.n+'</button>').join('')}</div>
+    <div class="seg" style="margin-top:12px"><button data-a="tfmt" data-id="story" class="${tFmt==='story'?'on':''}">Estado / historia</button><button data-a="tfmt" data-id="post" class="${tFmt==='post'?'on':''}">Publicación cuadrada</button></div></div>
+   <canvas id="tcv" class="tcv${tFmt==='post'?' sq':''}"></canvas>
+   <div class="btn-row"><button class="btn" data-a="tsave">${navigator.canShare?'Compartir imagen':'Descargar imagen'}</button></div>
+   <p class="small muted center">En el móvil, también puedes mantener pulsada la imagen para guardarla.</p></div>`;
+}
+async function saveCard(){
+  const cv=document.getElementById('tcv');const blob=await new Promise(r=>cv.toBlob(r,'image/png'));const name='arraigados-'+VERSES[tVerse].ref.replace(/[^\wáéíóúñ]+/gi,'-')+'.png';
+  try{const f=new File([blob],name,{type:'image/png'});if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f],title:VERSES[tVerse].ref});return;}}catch(e){if(e&&e.name==='AbortError')return;}
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},1000);
+}
+
+/* ================= ESCUCHAR (audio con la voz del móvil) ================= */
+function speak(text){
+  try{const ss=window.speechSynthesis;if(!ss)return false;if(ss.speaking){ss.cancel();return true;}
+   const u=new SpeechSynthesisUtterance(text);u.lang='es-ES';u.rate=.92;const v=ss.getVoices().find(v=>/^es/i.test(v.lang));if(v)u.voice=v;ss.speak(u);return true;}catch(e){return false;}
+}
+const canSpeak=()=>{try{return 'speechSynthesis' in window;}catch(e){return false;}};
 
 /* ================= ACCIONES ================= */
 function copyFrom(id,btn){
@@ -1867,6 +2003,13 @@ function activate(b){
     case 'restart-plan':migratePlans();S.plans[S.plan]={i:0,start:today()};save();refresh();break;
     case 'setplan':migratePlans();S.plan=id;if(!S.plans[id])S.plans[id]={i:0,start:today()};save();back();refresh();break;
     case 'goal':goalF=id;draw(false);break;
+    case 'install':if(deferredInstall){deferredInstall.prompt();deferredInstall.userChoice.finally(()=>{deferredInstall=null;renderHome();});}else push(sInstallIOS);break;
+    case 'hide-install':try{localStorage.setItem('arr.hideInstall',today());}catch(e){}renderHome();break;
+    case 'native-share':navigator.share({title:'Arraigados',text:document.getElementById('shtxt').value}).catch(()=>{});break;
+    case 'tdesign':tDesign=id;draw(false);break;
+    case 'tfmt':tFmt=id;draw(false);break;
+    case 'tsave':saveCard();break;
+    case 'speak':speak(vText(id)+'. '+VERSES[id].ref);break;
     case 'senda':sendaTab=id;draw(false);break;
     case 'med-done':{const ps=pasajeHoy(),n=document.getElementById('mednote').value.trim();S.diary=S.diary||[];if(n)S.diary.push({id:uid(),d:today(),tag:'aprendi',t:ps[0]+': '+n});markDay('med');refresh();break;}
     case 'dtag':dTag=id;draw(false);break;
@@ -1909,11 +2052,11 @@ function activate(b){
 }
 document.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(b)activate(b);});
 document.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.matches&&e.target.matches('.tag,.blank')){e.preventDefault();activate(e.target);}});
-document.addEventListener('change',e=>{if(e.target.id==='mentorSel'){S.mentorId=e.target.value;save();setTimeout(()=>draw(false),50);}});
+document.addEventListener('change',e=>{if(e.target.id==='tsel'){tVerse=e.target.value;draw(false);return;}if(e.target.id==='mentorSel'){S.mentorId=e.target.value;save();setTimeout(()=>draw(false),50);}});
 document.addEventListener('input',e=>{if(e.target.id==='dsearch'){dq=e.target.value;document.getElementById('dlist').innerHTML=wordList();}});
 document.addEventListener('submit',e=>{
   const fm=e.target.closest('[data-f]');if(!fm)return;e.preventDefault();const k=fm.dataset.f;
-  if(k==='onboard'){if(!S.path)S.path='nuevo';if(S.plan==='primeros'&&!planIdx()&&S.path!=='nuevo'){const np=S.path==='creyente'?'evangelios30':'semana1';S.plan=np;S.plans[np]={i:0,start:today()};}S.name=document.getElementById('obname').value.trim();save();closeAll();}
+  if(k==='onboard'){growSoon=true;if(!S.path)S.path='nuevo';if(S.plan==='primeros'&&!planIdx()&&S.path!=='nuevo'){const np=S.path==='creyente'?'evangelios30':'semana1';S.plan=np;S.plans[np]={i:0,start:today()};}S.name=document.getElementById('obname').value.trim();save();closeAll();}
   else if(k==='name'){S.name=document.getElementById('namein').value.trim();save();refresh();}
   else if(k==='mentor'){S.mentor=document.getElementById('mentorin').value.trim();save();refresh();}
   else if(k==='add-req'){const v=document.getElementById('reqin').value.trim();if(!v)return;S.prayers.push({id:uid(),t:v,d:today(),answered:null});save();refresh();}
@@ -1922,6 +2065,8 @@ document.addEventListener('submit',e=>{
 
 if(!S.uid){S.uid=uid();save();}
 migratePlans();renderHome();initCloud();
+const _md=markDay;markDay=function(k){const before=active(today());_md(k);if(!before)growSoon=true;};
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&Date.now()-lastGrow>30*60e3&&$('#sheet').hidden){plateAnimated=false;renderHome();}});
 if(!S.name&&!S.started)push(sWelcome);
 </script>
 
