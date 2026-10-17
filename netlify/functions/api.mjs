@@ -8,11 +8,11 @@ const okCode = (c) => /^[A-Z2-9]{6}$/.test(c || "");
 const json = (o, s = 200) => new Response(JSON.stringify(o), { status: s, headers: { "content-type": "application/json", "cache-control": "no-store" } });
 
 function view(g, uid) {
-  return { name: g.name, members: g.members || {}, pets: g.pets || {}, animos: (g.animos || {})[uid] || [] };
+  return { name: g.name, members: g.members || {}, pets: g.pets || {}, animos: (g.animos || {})[uid] || [], reto: g.reto || null, posts: g.posts || {} };
 }
 
 function mutate(g, a, b, out = []) {
-  g.members ||= {}; g.pets ||= {}; g.animos ||= {};
+  g.members ||= {}; g.pets ||= {}; g.animos ||= {}; g.posts ||= {};
   const uid = clip(b.uid, 40);
   if (a === "sync" && uid) {
     const m = b.member || {}, t = m.today || {};
@@ -20,9 +20,22 @@ function mutate(g, a, b, out = []) {
       name: clip(m.name, 40), stage: +m.stage || 0, streak: +m.streak || 0, total: +m.total || 0,
       L: +m.L || 0, V: +m.V || 0, p: +m.p || 0, read: clip(m.read, 60), day: clip(m.day, 10),
       today: { r: !!t.r, p: !!t.p, m: !!t.m }, w: Math.min(7, +m.w || 0), wk: clip(m.wk, 10), mentor: clip(m.mentor, 40), at: Date.now(),
+      rt: m.rt && m.rt.id ? { id: clip(m.rt.id, 20), n: Math.max(0, Math.min(400, +m.rt.n || 0)), d: !!m.rt.d } : null,
     };
   }
   if (a === "leave" && uid) delete g.members[uid];
+  if (a === "reto" && uid && g.members[uid]) {
+    const r = b.reto || {};
+    if (r.id) {
+      g.reto = { id: clip(r.id, 20), start: clip(r.start, 10), by: uid, at: Date.now() };
+      for (const id of Object.keys(g.members)) if (id !== uid) out.push([id, { title: "🌱 Nuevo reto en tu grupo", body: (g.members[uid].name || "Alguien") + " propone: " + clip(r.t, 90) + ". ¡Hacedlo juntos!" }]);
+    } else delete g.reto;
+  }
+  if (a === "forget" && uid) {
+    delete g.members[uid]; delete g.animos[uid];
+    for (const [k, p] of Object.entries(g.pets)) { if (p.by === uid) delete g.pets[k]; else if (p.oran) p.oran = p.oran.filter((x) => x !== uid); }
+  }
+  if (a === "delpet") { const p = g.pets[clip(b.id, 40)]; if (p && p.by === uid) delete g.pets[clip(b.id, 40)]; }
   if (a === "pet") {
     const id = clip(b.id, 40), p = b.pet || {};
     if (id && Object.keys(g.pets).length < 300)
@@ -40,6 +53,18 @@ function mutate(g, a, b, out = []) {
     const to = clip(b.to, 40), x = b.a || {};
     if (to) { g.animos[to] = [{ fromName: clip(x.fromName, 40), vid: clip(x.vid, 20), kind: clip(x.kind, 20), at: Date.now() }, ...(g.animos[to] || [])].slice(0, 20); out.push([to, { title: clip(x.fromName, 40) || "Alguien de tu grupo", body: clip(x.text, 160) || "Te ha enviado un mensaje de ánimo." }]); }
   }
+  if (a === "post" && uid && g.members[uid]) {
+    const id = clip(b.id, 40), p = b.post || {};
+    if (id && clip(p.t, 400).trim() && Object.keys(g.posts).length < 200) {
+      g.posts[id] = { by: uid, name: clip(p.name, 40), t: clip(p.t, 400), day: clip(p.day, 10), v: clip(p.v, 20), at: Date.now(), am: [] };
+      for (const to of Object.keys(g.members)) if (to !== uid) out.push([to, { title: "💬 " + (clip(p.name, 40) || "Alguien de tu grupo"), body: "Ha compartido sobre la pregunta de hoy: «" + clip(p.t, 90) + "»" }]);
+    }
+  }
+  if (a === "amen" && uid) { const p = g.posts[clip(b.id, 40)]; if (p) { const s = new Set(p.am || []); if (s.has(uid)) s.delete(uid); else s.add(uid); p.am = [...s]; } }
+  if (a === "delpost" && uid) { const p = g.posts[clip(b.id, 40)]; if (p && p.by === uid) delete g.posts[clip(b.id, 40)]; }
+  if (a === "forget" && uid) for (const [k, p] of Object.entries(g.posts)) { if (p.by === uid) delete g.posts[k]; else if (p.am) p.am = p.am.filter((x) => x !== uid); }
+  // Limpieza: reflexiones de más de 21 días
+  for (const [k, p] of Object.entries(g.posts)) if (p.at < Date.now() - 21 * 864e5) delete g.posts[k];
   // Limpieza: peticiones respondidas hace más de 60 días
   const old = Date.now() - 60 * 864e5;
   for (const [k, p] of Object.entries(g.pets)) if (p.answered && p.at < old) delete g.pets[k];

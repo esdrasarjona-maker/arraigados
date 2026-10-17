@@ -39,7 +39,7 @@ export default async () => {
     const [hh, mm] = r.time.split(":").map(Number), want = hh * 60 + mm;
     let diff = now.min - want; if (diff < 0) diff += 1440;
     if (diff > 20 || r.last === now.day) continue;
-    const body = (r.name ? r.name + ", tu" : "Tu") + " maná de hoy te espera. «" + VERSOS[n % VERSOS.length] + "»";
+    const body = (r.name ? r.name + ", tu" : "Tu") + " tiempo con Dios de hoy te espera. «" + VERSOS[n % VERSOS.length] + "»";
     try {
       await webpush.sendNotification(r.sub, JSON.stringify({ title: "Arraigados", body }), { TTL: 3600 });
       r.last = now.day; await store.setJSON(key, r);
