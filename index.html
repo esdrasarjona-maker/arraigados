@@ -1340,6 +1340,7 @@ function greeting(){const h=new Date().getHours();return h<6?'Buenas noches':h<1
 const VDAY=['col2-6','sal1-3','jn15-5','lam3-22','pr3-5','sal119-105','ef2-8','ro8-1','jn3-16','fil4-6','2co5-17','jn14-6','mt22-37','heb10-24','gal5-22','1jn1-9','ro6-23','sal119-11','mt28-19','jn10-28','ef2-20','ro3-23'];
 function verseOfDay(){const n=Math.floor((Date.now()-new Date().getTimezoneOffset()*6e4)/864e5);return VDAY[n%VDAY.length];}
 function renderHome(){
+  setPal();
   const d=S.days[today()]||{},due=dueVerses().length,nv=Object.keys(S.verses).length,reading=todayRead();
   const next=LESSONS.find(l=>!S.lessons[l.id])||(lessonsDone()>=5||S.path==='creyente'?LESSONS2.find(l=>!S.lessons[l.id]):null),vid=verseOfDay(),V=VERSES[vid],inMem=!!S.verses[vid];
   const doneN=[d.read||d.med,d.pray,d.mem].filter(Boolean).length;
