@@ -218,6 +218,40 @@ label.lbl{display:block;font-weight:700;margin-bottom:6px}
 .gospel div{display:flex;gap:14px}
 .gospel div::before{counter-increment:g;content:counter(g);flex:none;width:32px;height:32px;border-radius:50%;background:var(--c-roca);color:#fff;display:grid;place-items:center;font-weight:800;font-family:var(--f-display)}
 .center{text-align:center}
+/* Acabado más humano */
+body{background:radial-gradient(1200px 600px at 100% -10%,color-mix(in srgb,var(--c-mana) 10%,transparent),transparent 60%),radial-gradient(900px 500px at -10% 30%,color-mix(in srgb,var(--accent) 8%,transparent),transparent 60%),var(--bg);background-attachment:fixed}
+svg.il{width:26px;height:26px;display:block}
+.eyebrow{font-family:var(--f-display);font-style:italic;font-weight:500;text-transform:none;letter-spacing:0;font-size:.92rem;color:color-mix(in srgb,var(--k,var(--accent)) 70%,var(--muted))}
+.hero .eyebrow{font-size:1rem}
+.card{border:0;box-shadow:0 1px 0 rgba(30,50,30,.04),0 8px 24px -18px rgba(30,50,30,.35);border-radius:22px}
+.xic{width:44px;height:44px;border-radius:46% 54% 52% 48%/55% 45% 55% 45%;background:color-mix(in srgb,var(--k) 15%,transparent)}
+.xic svg.il{width:28px;height:28px}
+.dring{border:0;background:color-mix(in srgb,var(--k) 14%,transparent);border-radius:48% 52% 45% 55%/52% 48% 52% 48%;width:46px;height:46px}
+.dring svg.il{width:28px;height:28px}
+.dring.done{background:var(--k)}
+.explore{background:transparent;box-shadow:none;border:0;padding:6px 4px 0}
+.explore .xrow{border-top:1px dashed color-mix(in srgb,var(--line) 90%,transparent)}
+.daily h2,.group h2{font-size:1.25rem}
+.daily-h .eyebrow{font-size:.95rem}
+.nav button svg.il{width:27px;height:27px}
+.nav button.on::before{left:38%;right:38%;height:4px;border-radius:0 0 6px 6px}
+.lesson{border:0;box-shadow:0 6px 18px -14px rgba(30,50,30,.4);border-radius:20px}
+.ln{border-radius:46% 54% 52% 48%/55% 45% 55% 45%}
+.btn{border-radius:16px}
+.chip{border-radius:14px}
+.masHead h1,.hello h1{font-weight:600}
+.greet{font-style:italic;font-size:1.15rem}
+#nl-badge-frame{bottom:calc(76px + env(safe-area-inset-bottom,0px))!important;transform:scale(.85);transform-origin:right bottom}
+.toggle{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
+.toggle b{display:block}.toggle span{font-size:.84rem;color:var(--muted)}
+.sw{flex:none;width:52px;height:30px;border-radius:99px;border:0;background:var(--line);position:relative;transition:background .2s}
+.sw i{position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:left .2s}
+.sw.on{background:var(--accent)}.sw.on i{left:25px}.sw:disabled{opacity:.4}
+.ankpick{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 10px 56px}
+.ankpick .chip{text-align:left}
+.coop .bar i{background:linear-gradient(90deg,var(--c-mana),var(--accent))}
+.notif{border-color:color-mix(in srgb,var(--accent) 35%,var(--line))}
+.invite{margin-top:10px;border-color:color-mix(in srgb,var(--c-disc) 35%,var(--line))}
 .nav{position:fixed;left:0;right:0;bottom:0;z-index:45;background:color-mix(in srgb,var(--surface) 92%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line);padding-left:max(6px,env(safe-area-inset-left,0px));padding-right:max(6px,env(safe-area-inset-right,0px));padding-bottom:env(safe-area-inset-bottom,0px)}
 .nav-in{max-width:560px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr)}
 .nav button{background:none;border:0;display:flex;flex-direction:column;align-items:center;gap:3px;padding:9px 2px 8px;font-size:.72rem;font-weight:700;color:var(--muted);position:relative}
@@ -1192,6 +1226,34 @@ const PRAYER2=[
  {f:'Súplica',t:'Pide e intercede',ref:'Filipenses 4:6',g:'Presenta tus necesidades y las de otros: tu familia, tu iglesia, tu grupo, tus autoridades, los que no conocen a Cristo. Ora por las peticiones que tienes apuntadas.',p:'¿Por quién vas a interceder hoy?',req:1}
 ];
 
+/* ================= CONSTANCIA Y COMUNIDAD (RV1909 verificados) ================= */
+Object.assign(VERSES,{
+ 'gal6-9':{ref:'Gálatas 6:9',t:'No nos cansemos, pues, de hacer bien; que a su tiempo segaremos, si no hubiéremos desmayado.'},
+ '1co15-58':{ref:'1 Corintios 15:58',t:'Así que, hermanos míos amados, estad firmes y constantes, creciendo en la obra del Señor siempre, sabiendo que vuestro trabajo en el Señor no es vano.'},
+ 'heb12-1':{ref:'Hebreos 12:1-2',t:'Por tanto nosotros también, teniendo en derredor nuestro una tan grande nube de testigos, dejando todo el peso del pecado que nos rodea, corramos con paciencia la carrera que nos es propuesta, Puestos los ojos en el autor y consumador de la fe, en Jesús.'},
+ 'stg5-16':{ref:'Santiago 5:16',t:'Confesaos vuestras faltas unos a otros, y rogad los unos por los otros, para que seáis sanos; la oración del justo, obrando eficazmente, puede mucho.'},
+ 'ecl4-9':{ref:'Eclesiastés 4:9-10',t:'Mejores son dos que uno; porque tienen mejor paga de su trabajo. Porque si cayeren, el uno levantará a su compañero: mas ¡ay del solo! que cuando cayere, no habrá segundo que lo levante.'},
+ 'pr27-17':{ref:'Proverbios 27:17',t:'Hierro con hierro se aguza; Y el hombre aguza el rostro de su amigo.'},
+ '1ts5-11':{ref:'1 Tesalonicenses 5:11',t:'Por lo cual, consolaos los unos a los otros, y edificaos los unos a los otros, así como lo hacéis.'},
+ 'sal133-1':{ref:'Salmo 133:1',t:'¡Mirad cuán bueno y cuán delicioso es Habitar los hermanos igualmente en uno!'},
+ 'heb10-25':{ref:'Hebreos 10:25',t:'No dejando nuestra congregación, como algunos tienen por costumbre, mas exhortándonos; y tanto más, cuanto veis que aquel día se acerca.'},
+ 'ro12-12':{ref:'Romanos 12:12',t:'Gozosos en la esperanza; sufridos en la tribulación; constantes en la oración.'}
+});
+Object.assign(EXPL,{
+ 'Gálatas 6:9':'No nos cansemos de hacer el bien, porque a su debido tiempo cosecharemos, si no nos rendimos.',
+ '1 Corintios 15:58':'Hermanos queridos, manteneos firmes y constantes, entregados siempre a la obra del Señor, sabiendo que nada de lo que hacéis para Él es en vano.',
+ 'Hebreos 12:1-2':'Rodeados de tantos testigos de la fe, dejemos todo lo que nos estorba y el pecado que nos enreda, y corramos con constancia la carrera, con los ojos puestos en Jesús.',
+ 'Santiago 5:16':'Confesad vuestros pecados unos a otros y orad unos por otros para ser sanados. La oración de quien vive en justicia es poderosa y eficaz.',
+ 'Eclesiastés 4:9-10':'Dos valen más que uno. Si uno cae, el otro lo levanta. ¡Pobre del que está solo y cae, porque no tiene quien lo levante!',
+ 'Proverbios 27:17':'Como el hierro afila el hierro, un amigo ayuda a otro a ser mejor.',
+ '1 Tesalonicenses 5:11':'Animaos y edificaos unos a otros, como ya lo estáis haciendo.',
+ 'Salmo 133:1':'¡Qué bueno y qué agradable es que los hermanos vivan juntos en armonía!',
+ 'Hebreos 10:25':'No dejemos de reunirnos, como algunos acostumbran, sino animémonos unos a otros, y más aún al ver que se acerca el día del Señor.',
+ 'Romanos 12:12':'Alegres en la esperanza, pacientes en el sufrimiento, constantes en la oración.'
+});
+Object.assign(ARCH,{'desmayado':'rendido, desanimado','segaremos':'cosecharemos','vano':'inútil','consumador':'el que lo completa','aguza':'afila','rogad':'orad','exhortándonos':'animándonos','congregación':'reunión de la iglesia','sufridos':'pacientes'});
+const CONSTANCIA=['gal6-9','1co15-58','heb12-1','lam3-22','ro12-12','fil1-6'];
+
 
 /* ================= UTILIDADES ================= */
 const $=s=>document.querySelector(s);
@@ -1236,6 +1298,25 @@ const ART={
  raz:'<svg viewBox="0 0 100 100"><path d="M50 8l34 12v26c0 22-14 38-34 46C30 84 16 68 16 46V20z" fill="rgba(255,255,255,.85)"/><path d="M36 50l10 10 20-22" stroke="rgba(0,0,0,.22)" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>',
  perfil:'<svg viewBox="0 0 100 100"><circle cx="50" cy="38" r="17" fill="rgba(255,255,255,.88)"/><path d="M18 90c4-20 16-30 32-30s28 10 32 30z" fill="rgba(255,255,255,.6)"/></svg>'
 };
+/* Iconos ilustrados a mano: dos tonos, trazo irregular */
+const IL=(body)=>'<svg class="il" viewBox="0 0 32 32" aria-hidden="true">'+body+'</svg>';
+Object.assign(I,{
+ book:IL('<path d="M4 8.5c3.6-1.4 7.4-1.2 11.2 1.1v15.6c-3.7-2.1-7.6-2.4-11.3-1.2z" fill="currentColor" opacity=".22"/><path d="M28 8.3c-3.7-1.3-7.5-1-11.3 1.3v15.6c3.8-2.2 7.6-2.4 11.4-1.1z" fill="currentColor" opacity=".38"/><path d="M4 8.5c3.6-1.4 7.4-1.2 11.2 1.1M28 8.3c-3.7-1.3-7.5-1-11.3 1.3M15.9 9.7v15.7M4 8.5l-.1 15.5M28 8.3l.1 15.6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M7.5 13.2c2-.5 3.9-.3 5.6.5M7.4 16.6c2-.4 3.9-.2 5.6.6M19.2 13.6c1.8-.8 3.6-1 5.5-.6" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" opacity=".6" fill="none"/>'),
+ flame:IL('<path d="M16.2 3.5c3.8 4.4 6 7.6 5.6 11.2-.4 3.3-2.8 5.4-5.8 5.4s-5.6-2.2-5.7-5.3c-.1-2.6 1.4-4.2 2.6-5.6.3 1.6 1 2.5 2 2.9-.5-3 .4-5.6 1.3-8.6z" fill="currentColor" opacity=".3"/><path d="M16.1 10.8c1.8 2.3 2.8 3.9 2.6 5.6-.2 1.6-1.3 2.6-2.8 2.6s-2.6-1-2.7-2.5c-.1-1.7 1.6-3.3 2.9-5.7z" fill="currentColor"/><path d="M11.5 22.2h9l-1 6.3h-7z" fill="currentColor" opacity=".45"/><path d="M10.3 22.2h11.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>'),
+ leaf:IL('<path d="M6.5 25.5C5.6 15 11.8 6.9 26 5.6c.9 13.6-6.4 20.6-18.2 20.3z" fill="currentColor" opacity=".3"/><path d="M6.5 25.5C5.6 15 11.8 6.9 26 5.6c.9 13.6-6.4 20.6-18.2 20.3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M5 27.5c5.2-6.4 10.4-11.6 16.3-16.4M11.2 19.7l-.6-5M15.4 15.6l4.7.3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" fill="none"/>'),
+ sun:IL('<circle cx="16" cy="16" r="6.2" fill="currentColor" opacity=".35"/><circle cx="16" cy="16" r="6.2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M16 3.8v3.1M16 25.1v3.1M3.8 16h3.1M25.1 16h3.1M7.4 7.4l2.1 2.2M22.5 22.4l2.1 2.2M7.3 24.6l2.2-2.1M22.4 9.6l2.2-2.1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>'),
+ root:IL('<path d="M16 17V9.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M16 11.5c-1-3.8-4-5.6-7.6-5.3.2 3.7 3.4 5.9 7.6 5.3z" fill="currentColor" opacity=".4"/><path d="M16.1 10.3c.8-4 3.8-6 7.6-5.9-.1 3.9-3.3 6.3-7.6 5.9z" fill="currentColor" opacity=".7"/><path d="M5 17.2c3.7-.4 7.5-.4 22 0" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" opacity=".6"/><path d="M16 17c-.6 3.2-3.5 5.8-7.4 6.9M16 17c.8 3 3.2 5.3 6.8 6.6M16 17.5c.3 3.4-.2 6.6-1.4 9.4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" fill="none"/>'),
+ pen:IL('<path d="M25.8 4.6c-7.4 1.6-12.6 7.3-14.6 15.4l2.4 1.1C19.8 15.6 24 10.6 25.8 4.6z" fill="currentColor" opacity=".35"/><path d="M25.8 4.6c-7.4 1.6-12.6 7.3-14.6 15.4l2.4 1.1C19.8 15.6 24 10.6 25.8 4.6zM11.2 20l-4.4 7.4M15 13.6l3.6 1.6M13.1 17l3.2 1.3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>'),
+ stones:IL('<ellipse cx="16" cy="24.4" rx="10.4" ry="3.6" fill="currentColor" opacity=".3"/><ellipse cx="15.4" cy="17.9" rx="7.6" ry="3.1" fill="currentColor" opacity=".5"/><ellipse cx="16.5" cy="12" rx="5.1" ry="2.6" fill="currentColor" opacity=".75"/><ellipse cx="15.8" cy="7.2" rx="2.9" ry="1.8" fill="currentColor"/>'),
+ shield:IL('<path d="M8 21.5c0-2.6 3.6-4 8-4s8 1.4 8 4-3.6 4.5-8 4.5-8-1.9-8-4.5z" fill="currentColor" opacity=".35"/><path d="M24 21.4c2.6-.4 4-1.5 4.2-3.2M8 21.5c0-2.6 3.6-4 8-4s8 1.4 8 4-3.6 4.5-8 4.5-8-1.9-8-4.5z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M16 15.2c1.7-1.9 2.4-3.4 2.1-5-.3-1.7-1.4-2.8-2-4.4-.8 1.8-2.6 3-2.4 5.2.1 1.6 1 3 2.3 4.2z" fill="currentColor"/>'),
+ aleph:IL('<path d="M7 5.5h15.5c1.7 0 2.6 1 2.6 2.6v18.4H9.6C8.2 26.5 7 25.4 7 24z" fill="currentColor" opacity=".22"/><path d="M7 24V7.8C7 6.4 8 5.5 9.4 5.5h15.7v21H9.6C8.2 26.5 7 25.4 7 24zM7 24c0-1.4 1.1-2.4 2.6-2.4h15.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><text x="16.4" y="17.8" text-anchor="middle" font-size="10" font-family="Noto Serif Hebrew, serif" fill="currentColor">א</text>'),
+ people:IL('<circle cx="10" cy="11" r="3.4" fill="currentColor" opacity=".55"/><circle cx="22" cy="11" r="3.4" fill="currentColor" opacity=".55"/><circle cx="16" cy="9.2" r="3.9" fill="currentColor"/><path d="M3.8 24.8c.6-4.2 3-6.4 6.2-6.4 1.4 0 2.6.4 3.5 1.1M28.2 24.8c-.6-4.2-3-6.4-6.2-6.4-1.4 0-2.6.4-3.5 1.1" fill="currentColor" opacity=".35"/><path d="M8.7 26c.9-5 3.6-7.5 7.3-7.5s6.4 2.5 7.3 7.5z" fill="currentColor" opacity=".8"/>'),
+ user:IL('<circle cx="16" cy="11" r="5" fill="currentColor" opacity=".7"/><path d="M6.5 27c1-5.6 4.6-8.7 9.5-8.7s8.5 3.1 9.5 8.7z" fill="currentColor" opacity=".35"/>'),
+ home:IL('<path d="M16 27.5V15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M16 16.5c-6.4.3-10.4-3.1-9.6-8.3 3.4-3.7 8.8-4.4 12.7-1.7 4.6-.3 7.7 3.2 6.6 7.4-1.8 2.9-5.8 3.6-9.7 2.6z" fill="currentColor" opacity=".35"/><path d="M16 20.5l-3.6-2.4M16 18.2l3.9-2.7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M8.5 27.6c4.8-.5 10-.5 15 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>'),
+ grid:IL('<circle cx="9.5" cy="9.5" r="4.2" fill="currentColor" opacity=".7"/><circle cx="22.5" cy="9.5" r="4.2" fill="currentColor" opacity=".4"/><circle cx="9.5" cy="22.5" r="4.2" fill="currentColor" opacity=".4"/><circle cx="22.5" cy="22.5" r="4.2" fill="currentColor" opacity=".7"/>'),
+ gear:IL('<path d="M16 5.5l2 2.5 3.2-.6.6 3.2 2.7 1.8-1.4 2.9 1.4 2.9-2.7 1.8-.6 3.2-3.2-.6-2 2.5-2-2.5-3.2.6-.6-3.2-2.7-1.8 1.4-2.9-1.4-2.9 2.7-1.8.6-3.2 3.2.6z" fill="currentColor" opacity=".3"/><circle cx="16" cy="16" r="4" fill="none" stroke="currentColor" stroke-width="1.7"/>')
+});
+
 const KC={mana:'--c-mana',palabra:'--c-palabra',oracion:'--c-oracion',memoria:'--c-memoria',fruto:'--c-fruto',fund:'--c-fund',roca:'--c-roca',piedras:'--c-piedras',disc:'--c-disc',dicc:'--c-dicc',cree:'--c-cree',raz:'--c-raz',perfil:'--accent'};
 
 /* ================= LÁMINA DEL ÁRBOL ================= */
@@ -1383,9 +1464,9 @@ function renderHome(){
     </div>
     
   </section>
-  ${an&&Date.now()-(an.at||0)<7*864e5?`<div class="animo"><span class="avatar sm">${esc((an.fromName||'?').slice(0,1).toUpperCase())}</span><div style="min-width:0"><b>${esc(an.fromName||'Alguien')} ora por ti</b><p class="scripture" style="font-size:.95rem;margin-top:2px">${esc(VERSES[an.vid]?vText(an.vid):'')}</p><p class="ref" style="margin-top:2px">${VERSES[an.vid]?VERSES[an.vid].ref:''}</p></div></div>`:''}
+  ${an&&Date.now()-(an.at||0)<7*864e5?`<div class="animo"><span class="avatar sm">${esc((an.fromName||'?').slice(0,1).toUpperCase())}</span><div style="min-width:0"><b>${esc(an.fromName||'Alguien')}: ${(ANK.find(k=>k[0]===an.kind)||[0,'🙏','Ora por ti'])[1]} ${esc((ANK.find(k=>k[0]===an.kind)||[0,'','ora por ti'])[2])}</b><p class="scripture" style="font-size:.95rem;margin-top:2px">${esc(VERSES[an.vid]?vText(an.vid):'')}</p><p class="ref" style="margin-top:2px">${VERSES[an.vid]?VERSES[an.vid].ref:''}</p></div></div>`:''}
   <section class="card daily">
-    <div class="daily-h"><div><div class="eyebrow">Tu maná de hoy</div><h2>${doneN===3?'Recogido. Gracias a Dios':doneN?doneN+' de 3 disciplinas':'Pan nuevo esta mañana'}</h2></div><span class="mini-n">${streakInfo().n}<small>días</small></span></div>
+    <div class="daily-h"><div><div class="eyebrow">El maná de hoy</div><h2>${doneN===3?'Todo recogido. ¡Gracias a Dios!':doneN?'Llevas '+doneN+' de 3. ¡Sigue!':'Hay pan nuevo esperándote'}</h2></div><span class="mini-n">${streakInfo().n}<small>días</small></span></div>
     ${row('palabra','palabra',I.book,'Palabra',reading?'Lee '+esc(reading):'Plan completado',!!d.read)}
     ${row('oracion','oracion',I.flame,'Oración','El Padre nuestro, paso a paso',!!d.pray)}
     ${row('meditar','palabra',I.sun,'Meditar',esc(pasajeHoy()[0])+' · '+esc(pasajeHoy()[1]),!!d.med)}
@@ -1393,9 +1474,10 @@ function renderHome(){
   </section>
   ${next?`<button class="nextroot" data-a="lesson" data-id="${next.id}"><span class="n" style="${LESSONS2.includes(next)?'background:var(--c-memoria)':''}">${(LESSONS.indexOf(next)+1)||(LESSONS2.indexOf(next)+1)}</span><span style="min-width:0;flex:1"><span class="eyebrow">${LESSONS2.includes(next)?'Tu próxima rama · Crecer en Cristo':S.path==='creyente'?'Repasa tus raíces':'Tu próxima raíz'}</span><br><b>${next.t}</b><br><span class="muted small">${next.s} · ${next.ref}</span></span>${I.chev}</button>`:''}
   ${S.path==='buscando'?`<div class="card seek" style="margin-top:10px"><div class="eyebrow">Para empezar</div><h2 style="margin-top:6px">¿Quién es Jesús?</h2><p class="small" style="margin-top:6px">No hace falta tenerlo todo claro para empezar. Lee el evangelio en cuatro pasos, mira las razones para creer y lee a Jesús en Juan con tus propios ojos.</p><div class="btn-row" style="margin-top:12px"><button class="btn" style="--k:var(--c-roca)" data-a="go" data-id="roca">El evangelio</button><button class="btn soft" style="--k:var(--c-raz)" data-a="go" data-id="raz">Razones para creer</button></div></div>`:''}
+  ${(()=>{const n=streakInfo().n;let h='';try{h=localStorage.getItem('arr.inv')||'';}catch(e){}return (n>=7||Object.keys(S.stones).length>=3)&&h!==String(Math.floor(n/7))?`<div class="card invite"><div class="eyebrow">Compartir es sembrar</div><h2 style="margin-top:6px">¿A quién le vendría bien Arraigados?</h2><p class="small muted" style="margin-top:4px">Llevas ${n} ${n===1?'día':'días'} buscando a Dios. Invita a alguien a caminar contigo: «Mejores son dos que uno» (Eclesiastés 4:9).</p><div class="btn-row" style="margin-top:10px"><button class="btn ghost sm" data-a="inv-hide" data-id="${Math.floor(n/7)}">Ahora no</button><button class="btn sm" data-a="go" data-id="compartir">Invitar</button></div></div>`:'';})()}
   ${groupCard()}
   <section class="explore">
-    <div class="eyebrow" style="margin:0 2px 8px">Profundiza</div>
+    <div class="eyebrow" style="margin:0 2px 8px">Para seguir creciendo</div>
     ${[['fund','fund',I.root,'Sendas de discipulado',lessonsDone()+'/'+LESSONS.length+' raíces · '+lessons2Done()+'/'+LESSONS2.length+' ramas'],['diario','fund',I.pen,'Mi diario','Cómo vas creciendo'],['compartir','disc',I.people,'Compartir la app','Enlace, QR e imágenes para estados'],['planes','palabra',I.book,'Planes de lectura',esc(curPlan().t)],['cree','cree',I.book,'Lo que creemos','Por gracia, por la fe, en Cristo'],['raz','raz',I.shield,'Razones para creer','Historia, resurrección, ciencia'],['dicc','dicc',I.aleph,'Diccionario bíblico',Object.keys(WORDS).length+' palabras originales'],['piedras','piedras',I.stones,'Piedras de memorial',Object.keys(S.stones).length+' de 12']].map(([id,k,ic,t,s])=>'<button class="xrow" style="--k:var('+KC[k]+')" data-a="go" data-id="'+id+'"><span class="xic">'+ic+'</span><span class="drow-b"><b>'+t+'</b><span>'+s+'</span></span>'+I.chev+'</button>').join('')}
   </section>
   <p class="foot">La Biblia es lo primero. Esta app no sustituye nada: solo quiere ayudarte a buscar a Dios. <button class="linkbtn" data-a="go" data-id="acerca">Leer más</button></p>`;
@@ -1403,7 +1485,8 @@ function renderHome(){
 function groupCard(){
   if(DB&&gm().length){
     const ms=gm().slice().sort((a,b)=>(b.streak||0)-(a.streak||0)).slice(0,6),t=today();
-    return '<button class="card group" data-a="go" data-id="disc"><div class="daily-h"><div><div class="eyebrow">Tu grupo</div><h2>'+esc(S.groupName||'Tu grupo')+' · '+gm().length+(gm().length===1?' persona':' personas')+'</h2></div>'+I.chev+'</div><div class="faces">'+ms.map(m=>{const on=m.day===t&&m.today&&(m.today.r||m.today.p||m.today.m);return '<span class="face'+(on?' on':'')+'"><span class="avatar">'+esc((m.name||'?').slice(0,1).toUpperCase())+'</span><small>'+esc((m.name||'').split(' ')[0])+'</small><em>'+(m.streak||0)+' días</em></span>';}).join('')+'</div></button>';
+    const gms=gm(),gsum=gms.filter(m=>m.day&&m.day>=addDays(t,-6)).reduce((a,m)=>a+Math.min(7,m.w||0),0),ggoal=Math.max(5,gms.length*5);
+    return '<button class="card group" data-a="go" data-id="disc"><div class="daily-h"><div><div class="eyebrow">Tu grupo · entre todos '+gsum+'/'+ggoal+' días esta semana</div><h2>'+esc(S.groupName||'Tu grupo')+' · '+gm().length+(gm().length===1?' persona':' personas')+'</h2></div>'+I.chev+'</div><div class="faces">'+ms.map(m=>{const on=m.day===t&&m.today&&(m.today.r||m.today.p||m.today.m);return '<span class="face'+(on?' on':'')+'"><span class="avatar">'+esc((m.name||'?').slice(0,1).toUpperCase())+'</span><small>'+esc((m.name||'').split(' ')[0])+'</small><em>'+(m.streak||0)+' días</em></span>';}).join('')+'</div></button>';
   }
   return '<button class="card group" data-a="go" data-id="disc"><div class="daily-h"><div><div class="eyebrow">Discipulado</div><h2>Camina con otros</h2><p class="small muted" style="margin-top:4px">Tu mentor, tus discípulos y su progreso. Haced discípulos a todas las naciones.</p></div>'+I.chev+'</div></button>';
 }
@@ -1415,7 +1498,8 @@ const localSave=save;
 save=function(){S.at=Date.now();localSave();scheduleSync();};
 let syncT=null,syncing=false,syncAgain=false;
 function scheduleSync(){if(!DB)return;clearTimeout(syncT);syncT=setTimeout(sync,1500);}
-function summary(){const d=S.days[today()]||{};return {name:S.name||'Sin nombre',stage:stageIdx(),streak:streakInfo().n,total:totalActive(),L:lessonsDone(),V:learned(),p:Object.keys(S.stones).length,read:S.readLog.length?S.readLog[S.readLog.length-1].ref:'',day:today(),today:{r:!!d.read,p:!!d.pray,m:!!d.mem},mentor:S.mentorId||'',group:S.group||'',at:Date.now()};}
+function weekDays(){let n=0;for(let i=0;i<7;i++)if(active(addDays(today(),-i)))n++;return n;}
+function summary(){const d=S.days[today()]||{};return {w:weekDays(),wk:addDays(today(),0),name:S.name||'Sin nombre',stage:stageIdx(),streak:streakInfo().n,total:totalActive(),L:lessonsDone(),V:learned(),p:Object.keys(S.stones).length,read:S.readLog.length?S.readLog[S.readLog.length-1].ref:'',day:today(),today:{r:!!d.read,p:!!d.pray,m:!!d.mem},mentor:S.mentorId||'',group:S.group||'',at:Date.now()};}
 async function sync(){
   if(!DB||!UID)return;if(syncing){syncAgain=true;return;}syncing=true;
   if(!DB.refresh)try{await DB.doc('data/users/'+UID+'/state').set({s:JSON.stringify(S),at:S.at||Date.now()});}catch(e){}
@@ -1508,6 +1592,8 @@ function sMana(){
     ${rowBtn('go','meditar','palabra',d.med,'Meditación',esc(pasajeHoy()[0]+' · '+pasajeHoy()[1]))}
     ${rowBtn('go','oracion','oracion',d.pray,'Oración','El Padre nuestro, paso a paso')}
     ${rowBtn('go','memoria','memoria',d.mem,'Memoria',nv?(due?due+' por repasar':'Todo al día'):'Elige tu primer versículo')}</div>
+   <div class="card"><div class="eyebrow">La clave es la constancia</div><p class="scripture" style="margin-top:8px">${esc(vText(CONSTANCIA[dayN()%CONSTANCIA.length]))}</p><p class="ref">${VERSES[CONSTANCIA[dayN()%CONSTANCIA.length]].ref}</p>${explain(VERSES[CONSTANCIA[dayN()%CONSTANCIA.length]].ref,VERSES[CONSTANCIA[dayN()%CONSTANCIA.length]].t)}
+    <p class="small" style="margin-top:10px">Pocos minutos cada día valen más que mucho de vez en cuando. Si fallas, no pasa nada: vuelve mañana. Lo importante no es la racha, sino seguir caminando con Él.</p></div>
    <div class="card"><div class="eyebrow">Por qué «maná»</div><p style="margin-top:8px">Cada mañana Dios daba a Israel pan del cielo, y no se podía guardar para el día siguiente (Éxodo 16). Así es caminar con Él: pan nuevo cada día. Basta con leer, orar o memorizar para recoger el de hoy.</p>
     <p class="small muted" style="margin-top:10px">Si un día no puedes, tienes un día de gracia cada semana: tu racha no se rompe. Y si se rompe, vuelve: sus misericordias son nuevas cada mañana.</p></div>
   </div>`;
@@ -1772,7 +1858,7 @@ function sStone(id){return function(){
   const s=STONES.find(x=>x.id===id),i=STONES.indexOf(s),got=S.stones[id];
   return bar('Piedras','Piedra '+(i+1)+' de 12')+`<div class="center" style="padding-top:20px"><div class="stone ${got?'on':''}" style="margin:0 auto;max-width:150px"><span class="st" style="max-width:150px;font-size:2.4rem;border-radius:${shapes[i%4]}">${i+1}</span></div>
    <h1 style="font-size:1.9rem;margin-top:20px">${s.n}</h1><p class="eyebrow" style="margin-top:8px">${s.ref}</p><p style="margin-top:16px;font-size:1.05rem">${esc(s.d)}</p>
-   ${got?'<p class="small muted" style="margin-top:10px">Levantada el '+fmtDate(got,{day:'numeric',month:'long',year:'numeric'})+'</p>':'<p class="small muted" style="margin-top:10px">Aún no la has levantado.</p>'}</div>`;};}
+   ${got?'<button class="btn soft sm" style="margin-top:14px" data-a="go" data-id="compartir">Invitar a alguien a caminar contigo</button>':''}${got?'<p class="small muted" style="margin-top:10px">Levantada el '+fmtDate(got,{day:'numeric',month:'long',year:'numeric'})+'</p>':'<p class="small muted" style="margin-top:10px">Aún no la has levantado.</p>'}</div>`;};}
 
 /* --- Discipulado --- */
 function myCode(){
@@ -1802,11 +1888,13 @@ function sDisc(){
       <p class="small muted" style="margin-top:12px">Pablo enseñó a Timoteo, Timoteo a hombres fieles, y ellos a otros. La madurez se ve cuando lo que recibiste lo pasas a otro.</p>
       <label class="lbl small" for="mentorSel" style="margin-top:14px">Mi mentor</label>
       <select id="mentorSel"><option value="">Sin mentor</option>${MEMBERS.filter(m=>m.id!==UID).map(m=>'<option value="'+esc(m.id)+'"'+(S.mentorId===m.id?' selected':'')+'>'+esc(m.name||'Sin nombre')+'</option>').join('')}</select></div>
+     ${coopCard(MEMBERS)}
+     ${notifPrompt()}
      ${meetingCard()}
      <div class="card"><div class="eyebrow">${esc(S.groupName||'Tu grupo')} · ${MEMBERS.length} ${MEMBERS.length===1?'persona':'personas'}</div>
-      ${ms.map(m=>{const mine=m.id===UID,isD=m.mentor===UID;return '<div class="dcard"><span class="avatar">'+esc((m.name||'?').slice(0,1).toUpperCase())+'</span><div style="flex:1;min-width:0"><b>'+esc(m.name||'Sin nombre')+(mine?' <span class="muted small">(tú)</span>':'')+(isD?' <span class="pill">Tu discípulo</span>':'')+(m.id===S.mentorId?' <span class="pill">Tu mentor</span>':'')+'</b><div class="small muted">'+STAGES[m.stage||0].n+' · '+(m.streak||0)+' días de maná · '+(m.L||0)+'/11 raíces · '+(m.V||0)+' versículos</div><div class="small muted" style="display:flex;align-items:center;gap:8px;margin-top:2px">'+dots(m)+'<span>Activo '+ago(m)+(m.read?' · leyendo '+esc(m.read):'')+'</span></div></div>'+(mine?'':'<button class="btn soft sm" data-a="animar" data-id="'+esc(m.id)+'">Orar y animar</button>')+'</div>';}).join('')}
-      <p class="small muted" style="margin-top:12px">«Orar y animar» le envía un versículo de ánimo y le dice que oras por él. Nadie ve tus oraciones ni tus notas: solo tu progreso.</p></div>
-     ${ANIMOS.length?'<div class="card"><div class="eyebrow">Te han animado</div>'+ANIMOS.map(a=>'<div class="req"><b>'+esc(a.fromName||'Alguien')+' ora por ti</b>'+(VERSES[a.vid]?'<p class="scripture" style="font-size:1rem">'+esc(vText(a.vid))+'</p><p class="ref">'+VERSES[a.vid].ref+'</p>':'')+'</div>').join('')+'</div>':''}
+      ${ms.map(m=>{const mine=m.id===UID,isD=m.mentor===UID;return '<div class="dcard"><span class="avatar">'+esc((m.name||'?').slice(0,1).toUpperCase())+'</span><div style="flex:1;min-width:0"><b>'+esc(m.name||'Sin nombre')+(mine?' <span class="muted small">(tú)</span>':'')+(isD?' <span class="pill">Tu discípulo</span>':'')+(m.id===S.mentorId?' <span class="pill">Tu mentor</span>':'')+'</b><div class="small muted">'+STAGES[m.stage||0].n+' · '+(m.streak||0)+' días de maná · '+(m.L||0)+'/11 raíces · '+(m.V||0)+' versículos</div><div class="small muted" style="display:flex;align-items:center;gap:8px;margin-top:2px">'+dots(m)+'<span>Activo '+ago(m)+(m.read?' · leyendo '+esc(m.read):'')+'</span></div></div>'+(mine?'':'<button class="btn soft sm" data-a="animar" data-id="'+esc(m.id)+'">Animar</button>')+'</div>'+(mine?'':'<div id="ank-'+esc(m.id)+'"></div>');}).join('')}
+      <p class="small muted" style="margin-top:12px">«Animar» le envía un mensaje edificante con su versículo, y le llega al momento si tiene los avisos activados. Nadie ve tus oraciones privadas ni tus notas: solo tu progreso.</p></div>
+     ${ANIMOS.length?'<div class="card"><div class="eyebrow">Te han animado</div>'+ANIMOS.map(a=>'<div class="req"><b>'+esc(a.fromName||'Alguien')+'</b><span>'+(ANK.find(k=>k[0]===a.kind)||[0,'🙏','Ora por ti'])[1]+' '+esc((ANK.find(k=>k[0]===a.kind)||[0,'🙏','Ora por ti'])[2])+'</span>'+(VERSES[a.vid]?'<p class="scripture" style="font-size:1rem">'+esc(vText(a.vid))+'</p><p class="ref">'+VERSES[a.vid].ref+'</p>':'')+'</div>').join('')+'</div>':''}
      <div class="card"><div class="eyebrow">Invita a tu grupo · código ${esc(S.group)}</div><p class="small" style="margin-top:6px">${MEMBERS.length<3?'Lo ideal es un grupo de 3 a 5 personas. ':MEMBERS.length>5?'Sois ya un grupo grande: pensad en multiplicaros en dos grupos (2 Timoteo 2:2). ':''}Envía este mensaje a quien quieras invitar.</p>
       <textarea class="code" id="ginv" readonly style="margin-top:10px;font-family:var(--f-ui);font-size:.85rem;min-height:90px">${esc('Te invito a mi grupo de discipulado «'+(S.groupName||'Arraigados')+'» en Arraigados. Entra en '+(DB&&DB.refresh?location.origin:'la app')+', ve a Discipulado y únete con el código '+S.group+'. «Considerémonos los unos a los otros para provocarnos al amor y a las buenas obras» (Hebreos 10:24).')}</textarea>
       <button class="btn soft full" style="margin-top:8px" data-a="copy" data-id="ginv">Copiar invitación</button>
@@ -1829,6 +1917,12 @@ function sDisc(){
     <button class="btn full" style="margin-top:8px" data-a="add-code">Añadir discípulo</button></div></div>`;
 }
 
+function coopCard(ms){
+  const t=today(),fresh=ms.filter(m=>m.day&&m.day>=addDays(t,-6)),sum=fresh.reduce((a,m)=>a+Math.min(7,m.w||0),0),goal=Math.max(5,ms.length*5),pct=Math.min(100,Math.round(sum/goal*100));
+  return '<div class="card coop"><div class="eyebrow">Meta del grupo · esta semana</div><h2 style="margin-top:6px">Entre todos: '+sum+' de '+goal+' días con Dios</h2><div class="bar"><i style="width:'+pct+'%"></i></div>'+
+   '<p class="small muted" style="margin-top:8px">'+(pct>=100?'¡Meta cumplida! Dad gracias juntos. ':'Cada día que alguien lee, ora o memoriza, sumáis todos. ')+'Aquí no hay ranking: crecemos juntos. «Mejores son dos que uno» (Eclesiastés 4:9).</p></div>';
+}
+function notifPrompt(){const n=notif();if(n.group||!pushOK()||(isIOS()&&!isStandalone()))return '';return '<div class="card notif"><b>Entérate al momento</b><p class="small muted" style="margin-top:4px">Activa los avisos del grupo para saber cuándo oran por ti o te animan.</p><button class="btn sm" style="margin-top:10px" data-a="ntog" data-id="group">Activar avisos del grupo</button></div>';}
 function meetingCard(){
   const wk=Math.floor(dayN()/7),ps=PASAJES[(wk*7+3)%PASAJES.length],vi=VIRTUDES[wk%8];
   return '<details class="card meet"><summary><div class="eyebrow">Reunión de esta semana</div><h2 style="margin-top:6px">'+esc(ps[1])+'</h2><p class="small muted">'+esc(ps[0])+' · toca para ver la guía</p></summary>'+
@@ -1838,6 +1932,14 @@ function meetingCard(){
    '<div><b>4 · Rendid cuentas con cariño (10 min)</b><p>¿Cómo va el maná de cada uno? Repasad la virtud de la semana: <b>'+esc(vi[0])+'</b>. '+esc(vi[2])+'</p></div>'+
    '<div><b>5 · Orad unos por otros (10 min)</b><p>Usad las peticiones del grupo de la sección Oración. «Orad los unos por los otros» (Santiago 5:16).</p></div></div></details>';
 }
+const ANK=[
+ ['ora','🙏','Estoy orando por ti','stg5-16'],
+ ['quetal','💬','¿Qué tal estás? Me he acordado de ti','1ts5-11'],
+ ['quedar','📖','¿Quedamos para leer la Biblia juntos?','ecl4-9'],
+ ['firme','💪','¡Ánimo, sigue firme! No te rindas','gal6-9'],
+ ['gracias','🌱','Doy gracias a Dios por tu vida','sal133-1'],
+ ['iglesia','⛪','¿Nos vemos en la iglesia esta semana?','heb10-25'],
+ ['crecer','🌳','Se nota cómo Dios te está haciendo crecer','1co15-58']];
 const ENC=['heb10-24','fil4-6','pr3-5','lam3-22','jn15-5','ro8-1','2co5-17'];
 
 /* --- Perfil --- */
@@ -2026,21 +2128,22 @@ function applySettings(){
 }
 const pushOK=()=>{try{return 'serviceWorker' in navigator&&'PushManager' in window&&'Notification' in window&&/^https:$/.test(location.protocol)&&!window.claude;}catch(e){return false;}};
 function sAjustes(){
-  const r=S.reminder||{},on=!!r.on,t=r.time||'07:30';
+  const n=notif();
   const perm=(()=>{try{return Notification.permission;}catch(e){return 'unsupported';}})();
   let note='';
-  if(!pushOK())note='Los recordatorios funcionan en la app publicada. También puedes añadirlo a tu calendario.';
+  if(!pushOK())note='Los avisos funcionan en la app publicada (arraigandonos.netlify.app). También puedes añadir el recordatorio a tu calendario.';
   else if(isIOS()&&!isStandalone())note='En iPhone, primero instala la app en tu pantalla de inicio y ábrela desde el icono. Después activa aquí el recordatorio.';
   else if(perm==='denied')note='Has bloqueado las notificaciones. Actívalas en los ajustes del navegador o del teléfono para esta web.';
+  const can=pushOK()&&perm!=='denied'&&!(isIOS()&&!isStandalone());
   return hero('perfil','Ajustes','Hazla a tu medida')+`<div class="stack">
-   <div class="card"><div class="eyebrow">Recordatorio diario</div><h2 style="margin-top:6px">Un aviso para tu tiempo con Dios</h2>
-    <p class="small muted" style="margin-top:4px">Cada día a tu hora te llegará un aviso con un versículo corto.</p>
-    <div class="setrow"><label for="remtime">Hora</label><input type="time" id="remtime" value="${t}"></div>
-    <div class="chips" style="margin-top:8px">${['06:30','07:30','08:30','13:30','21:30','22:30'].map(h=>'<button class="chip'+(t===h?' on':'')+'" data-a="remquick" data-id="'+h+'">'+h+'</button>').join('')}</div>
-    ${note?'<p class="small" style="margin-top:12px;background:var(--surface-2);padding:10px 12px;border-radius:12px">'+note+'</p>':''}
-    <div class="btn-row" style="margin-top:14px">${on?'<button class="btn ghost" data-a="remoff">Desactivar</button><button class="btn soft" data-a="remtest">Probar ahora</button>':'<button class="btn" data-a="remon" '+(pushOK()&&perm!=='denied'&&!(isIOS()&&!isStandalone())?'':'disabled')+'>Activar recordatorio</button>'}</div>
-    <div id="remmsg" class="small" style="margin-top:8px">${on?'Activado cada día a las '+esc(t)+'.':''}</div>
-    <button class="linkbtn small" style="margin-top:10px" data-a="ics">O añadirlo a mi calendario (funciona en cualquier móvil)</button></div>
+   <div class="card"><div class="eyebrow">Avisos</div><h2 style="margin-top:6px">Que nada se te pase</h2>
+    ${note?'<p class="small" style="margin-top:10px;background:var(--surface-2);padding:10px 12px;border-radius:12px">'+note+'</p>':''}
+    <div class="toggle"><div><b>Recordatorio diario</b><span>Un aviso a tu hora con un versículo corto</span></div><button class="sw${n.daily?' on':''}" data-a="ntog" data-id="daily" ${can?'':'disabled'} aria-pressed="${n.daily}"><i></i></button></div>
+    <div class="setrow"><label for="remtime">Hora</label><input type="time" id="remtime" value="${n.time}"></div>
+    <div class="chips" style="margin-top:8px">${['06:30','07:30','08:30','13:30','21:30','22:30'].map(h=>'<button class="chip'+(n.time===h?' on':'')+'" data-a="remquick" data-id="'+h+'">'+h+'</button>').join('')}</div>
+    <div class="toggle"><div><b>Avisos del grupo</b><span>Cuando alguien ora por tu petición o te envía un ánimo</span></div><button class="sw${n.group?' on':''}" data-a="ntog" data-id="group" ${can?'':'disabled'} aria-pressed="${n.group}"><i></i></button></div>
+    <div id="remmsg" class="small" style="margin-top:8px"></div>
+    <div class="btn-row" style="margin-top:10px">${n.daily||n.group?'<button class="btn soft sm" data-a="remtest">Enviarme un aviso de prueba</button>':''}<button class="btn ghost sm" data-a="ics">Añadir a mi calendario</button></div></div>
    <div class="card"><div class="eyebrow">Tamaño de letra</div><div class="seg" style="margin-top:10px">${[['normal','Normal'],['grande','Grande'],['enorme','Muy grande']].map(([k,l])=>'<button data-a="fsize" data-id="'+k+'" class="'+((S.fontSize||'normal')===k?'on':'')+'">'+l+'</button>').join('')}</div>
     <p class="scripture" style="margin-top:12px">Lámpara es a mis pies tu palabra, y lumbrera a mi camino.</p></div>
    <div class="card"><div class="eyebrow">Aspecto del árbol</div><div class="seg" style="margin-top:10px">${[['auto','Según la hora'],['dia','Siempre de día'],['noche','Siempre de noche']].map(([k,l])=>'<button data-a="look" data-id="'+k+'" class="'+((S.look||'auto')===k?'on':'')+'">'+l+'</button>').join('')}</div>
@@ -2051,19 +2154,23 @@ function sAjustes(){
 }
 function b64u(s){const p='='.repeat((4-s.length%4)%4),b=atob((s+p).replace(/-/g,'+').replace(/_/g,'/'));return Uint8Array.from(b,c=>c.charCodeAt(0));}
 async function pushApi(body){const r=await fetch('/api/push',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(body)});const j=await r.json().catch(()=>({}));if(!r.ok)throw new Error(j.error||r.status);return j;}
-async function enableReminder(time){
+function notif(){const r=S.reminder||{};return {daily:!!r.on,time:r.time||'07:30',group:r.group!==undefined?!!r.group:false};}
+async function pushSync(changes){
   const msg=t=>{const m=document.getElementById('remmsg');if(m)m.textContent=t;};
+  const n=Object.assign(notif(),changes);
   try{
-    msg('Pidiendo permiso…');
-    const p=await Notification.requestPermission();if(p!=='granted'){msg('Necesitamos tu permiso para enviarte el aviso.');return;}
-    const reg=await navigator.serviceWorker.ready,{key}=await pushApi({action:'key'});
-    let sub=await reg.pushManager.getSubscription();if(!sub)sub=await reg.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:b64u(key)});
-    const tz=Intl.DateTimeFormat().resolvedOptions().timeZone||'Europe/Madrid';
-    await pushApi({action:'subscribe',sub:sub.toJSON(),time,tz,name:S.name});
-    S.reminder={on:true,time};save();draw(false);
-  }catch(e){msg('No se pudo activar. Comprueba tu conexión e inténtalo otra vez.');}
+    const reg=await navigator.serviceWorker.ready;let sub=await reg.pushManager.getSubscription();
+    if(!n.daily&&!n.group){if(sub){await pushApi({action:'unsubscribe',sub:sub.toJSON(),uid:S.uid}).catch(()=>{});await sub.unsubscribe().catch(()=>{});}}
+    else{
+      msg('Un momento…');
+      const p=await Notification.requestPermission();if(p!=='granted'){msg('Necesitamos tu permiso para enviarte avisos.');return;}
+      const {key}=await pushApi({action:'key'});if(!sub)sub=await reg.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:b64u(key)});
+      const tz=Intl.DateTimeFormat().resolvedOptions().timeZone||'Europe/Madrid';
+      await pushApi({action:'subscribe',sub:sub.toJSON(),time:n.time,tz,name:S.name,uid:S.uid,daily:n.daily,group:n.group});
+    }
+    S.reminder={on:n.daily,time:n.time,group:n.group};save();draw(false);
+  }catch(e){msg('No se pudo guardar. Comprueba tu conexión e inténtalo otra vez.');}
 }
-async function disableReminder(){try{const reg=await navigator.serviceWorker.ready,sub=await reg.pushManager.getSubscription();if(sub){await pushApi({action:'unsubscribe',sub:sub.toJSON()}).catch(()=>{});await sub.unsubscribe();}}catch(e){}S.reminder={on:false,time:(S.reminder||{}).time||'07:30'};save();draw(false);}
 async function testReminder(){const m=document.getElementById('remmsg');try{const reg=await navigator.serviceWorker.ready,sub=await reg.pushManager.getSubscription();if(!sub)throw 0;await pushApi({action:'test',sub:sub.toJSON()});if(m)m.textContent='Enviado. Te llegará en unos segundos.';}catch(e){if(m)m.textContent='No se pudo enviar la prueba.';}}
 function downloadICS(time){
   const [h,mi]=time.split(':'),d=today().replace(/-/g,''),url=APP_URL();
@@ -2109,10 +2216,10 @@ function activate(b){
     case 'setplan':migratePlans();S.plan=id;if(!S.plans[id])S.plans[id]={i:0,start:today()};save();back();refresh();break;
     case 'goal':goalF=id;draw(false);break;
     case 'nav':navTo(id);break;
-    case 'remon':enableReminder((document.getElementById('remtime')||{}).value||'07:30');break;
-    case 'remoff':disableReminder();break;
+    case 'inv-hide':try{localStorage.setItem('arr.inv',id);}catch(e){}renderHome();break;
+    case 'ntog':pushSync({[id]:!notif()[id]});break;
     case 'remtest':testReminder();break;
-    case 'remquick':S.reminder=Object.assign({},S.reminder,{time:id});save();if(S.reminder.on)enableReminder(id);else draw(false);break;
+    case 'remquick':if(notif().daily)pushSync({time:id});else{S.reminder=Object.assign({},S.reminder,{time:id});save();draw(false);}break;
     case 'ics':downloadICS((document.getElementById('remtime')||{}).value||'07:30');break;
     case 'fsize':S.fontSize=id;save();applySettings();draw(false);break;
     case 'look':S.look=id;save();plateAnimated=false;draw(false);renderHome();break;
@@ -2150,8 +2257,10 @@ function activate(b){
       else{document.getElementById('sh-'+id).innerHTML='<textarea class="code" id="sht-'+id+'" readonly style="font-family:var(--f-ui);font-size:.85rem;min-height:80px">'+esc('¿Puedes orar por esto conmigo? '+p.t+'\n\n«Orad los unos por los otros» (Santiago 5:16)')+'</textarea><button class="btn soft full" style="margin-top:6px" data-a="copy" data-id="sht-'+id+'">Copiar para enviar</button>';}
       break;}
     case 'pray-for':{const p=PETS.find(x=>x.id===id);if(!p||!DB)break;const set=new Set(p.oran||[]);if(set.has(UID))set.delete(UID);else set.add(UID);b.disabled=true;DB.doc('peticiones/'+id).update({oran:[...set]}).then(()=>{},()=>{b.disabled=false;});break;}
-    case 'animar':{if(!DB)break;const vid=ENC[Math.floor(Math.random()*ENC.length)];
-      b.disabled=true;DB.collection('animos').add({to:id,from:UID,fromName:S.name||'Alguien',vid,at:Date.now()}).then(()=>{b.textContent='Enviado';},()=>{b.disabled=false;b.textContent='No se pudo enviar';});break;}
+    case 'animar':{const box=document.getElementById('ank-'+id);if(!box)break;box.innerHTML=box.innerHTML?'':'<div class="ankpick">'+ANK.map(k=>'<button class="chip" data-a="animo-send" data-id="'+id+'|'+k[0]+'">'+k[1]+' '+esc(k[2])+'</button>').join('')+'</div>';break;}
+    case 'animo-send':{if(!DB)break;const [to,kind]=id.split('|'),k=ANK.find(x=>x[0]===kind);if(!k)break;
+      document.querySelectorAll('[data-a=animo-send]').forEach(x=>x.disabled=true);
+      DB.collection('animos').add({to,from:UID,fromName:S.name||'Alguien',vid:k[3],kind,text:k[2]+' · «'+VERSES[k[3]].t.slice(0,90)+(VERSES[k[3]].t.length>90?'…':'')+'» ('+VERSES[k[3]].ref+')',at:Date.now()}).then(()=>{const bx=document.getElementById('ank-'+to);if(bx)bx.innerHTML='<p class="small" style="color:var(--accent);font-weight:700;margin-top:6px">Enviado: «'+esc(k[2])+'»</p>';},()=>{const bx=document.getElementById('ank-'+to);if(bx)bx.innerHTML='<p class="small">No se pudo enviar. Revisa tu conexión.</p>';});break;}
     case 'encourage':{const x=S.disciples.find(d=>d.u===id),vid=ENC[Math.floor(Math.random()*ENC.length)],V=VERSES[vid];
       const txt='¡Ánimo, '+x.n+'! Estoy orando por ti.\n\n«'+V.t+'» ('+V.ref+')';
       document.getElementById('enc-'+id).innerHTML='<textarea class="code" id="enct-'+id+'" readonly style="font-family:var(--f-ui);font-size:.85rem;min-height:110px">'+esc(txt)+'</textarea><button class="btn soft full" style="margin:6px 0 10px" data-a="copy" data-id="enct-'+id+'">Copiar mensaje</button>';break;}
@@ -2165,7 +2274,7 @@ function activate(b){
 }
 document.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(b)activate(b);});
 document.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.matches&&e.target.matches('.tag,.blank')){e.preventDefault();activate(e.target);}});
-document.addEventListener('change',e=>{if(e.target.id==='remtime'){S.reminder=Object.assign({},S.reminder,{time:e.target.value});save();if(S.reminder.on)enableReminder(e.target.value);return;}if(e.target.id==='tsel'){tVerse=e.target.value;draw(false);return;}if(e.target.id==='mentorSel'){S.mentorId=e.target.value;save();setTimeout(()=>draw(false),50);}});
+document.addEventListener('change',e=>{if(e.target.id==='remtime'){if(notif().daily)pushSync({time:e.target.value});else{S.reminder=Object.assign({},S.reminder,{time:e.target.value});save();}return;}if(e.target.id==='tsel'){tVerse=e.target.value;draw(false);return;}if(e.target.id==='mentorSel'){S.mentorId=e.target.value;save();setTimeout(()=>draw(false),50);}});
 document.addEventListener('input',e=>{if(e.target.id==='dsearch'){dq=e.target.value;document.getElementById('dlist').innerHTML=wordList();}});
 document.addEventListener('submit',e=>{
   const fm=e.target.closest('[data-f]');if(!fm)return;e.preventDefault();const k=fm.dataset.f;
@@ -2179,7 +2288,8 @@ document.addEventListener('submit',e=>{
 if(!S.uid){S.uid=uid();save();}
 Object.keys(SEC).forEach(k=>{SEC[k].__id=k;});applySettings();
 migratePlans();renderHome();initCloud();renderNav();
-const _md=markDay;markDay=function(k){const before=active(today());_md(k);if(!before)growSoon=true;};
+const _md=markDay;markDay=function(k){const before=active(today());_md(k);if(!before){growSoon=true;const n=streakInfo().n,v=VERSES[CONSTANCIA[n%CONSTANCIA.length]];showNote('Maná recogido · '+n+(n===1?' día':' días'),'«'+v.t.split(/[;:.]/)[0]+'» ('+v.ref+')');}};
+function showNote(t,sub){const el=document.getElementById('toast');el.innerHTML='<span class="tgem"></span><span><b>'+esc(t)+'</b><br><span style="font-weight:500;opacity:.85">'+esc(sub)+'</span></span>';el.hidden=false;clearTimeout(showNote.t);showNote.t=setTimeout(()=>{el.hidden=true;},4200);}
 document.addEventListener('visibilitychange',()=>{if(!document.hidden&&Date.now()-lastGrow>30*60e3&&$('#sheet').hidden){plateAnimated=false;renderHome();}});
 if(!S.name&&!S.started)push(sWelcome);
 </script>

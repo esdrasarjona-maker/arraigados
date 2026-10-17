@@ -34,7 +34,7 @@ export default async () => {
   const n = Math.floor(Date.now() / 864e5);
   for (const { key } of blobs) {
     const r = await store.get(key, { type: "json" });
-    if (!r || !r.sub) continue;
+    if (!r || !r.sub || r.daily === false) continue;
     const now = localNow(r.tz || "Europe/Madrid");
     const [hh, mm] = r.time.split(":").map(Number), want = hh * 60 + mm;
     let diff = now.min - want; if (diff < 0) diff += 1440;

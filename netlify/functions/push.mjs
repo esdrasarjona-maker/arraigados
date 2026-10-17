@@ -10,6 +10,15 @@ export async function keys(store) {
   return k;
 }
 const idOf = (ep) => "push/" + createHash("sha256").update(String(ep)).digest("hex").slice(0, 32);
+export async function notifyUser(store, uid, payload) {
+  try {
+    const r = await store.get("pu/" + String(uid).replace(/[^\w-]/g, "").slice(0, 40), { type: "json" });
+    if (!r || !r.sub) return;
+    const k = await keys(store);
+    webpush.setVapidDetails(process.env.URL || "https://arraigandonos.netlify.app", k.publicKey, k.privateKey);
+    await webpush.sendNotification(r.sub, JSON.stringify(payload), { TTL: 86400 });
+  } catch (e) { if (e && (e.statusCode === 404 || e.statusCode === 410)) await store.delete("pu/" + String(uid).replace(/[^\w-]/g, "").slice(0, 40)); }
+}
 const okTime = (t) => /^([01]\d|2[0-3]):[0-5]\d$/.test(t || "");
 
 export default async (req) => {
@@ -26,10 +35,12 @@ export default async (req) => {
     let tz = String(b.tz || "Europe/Madrid").slice(0, 60);
     try { new Intl.DateTimeFormat("es", { timeZone: tz }); } catch { tz = "Europe/Madrid"; }
     const prev = await store.get(id, { type: "json" });
-    await store.setJSON(id, { sub, time: b.time, tz, name: String(b.name || "").slice(0, 40), last: prev?.last || "" });
+    const uid = String(b.uid || "").slice(0, 40);
+    await store.setJSON(id, { sub, time: b.time, tz, name: String(b.name || "").slice(0, 40), last: prev?.last || "", daily: b.daily !== false, uid });
+    if (uid) { if (b.group !== false) await store.setJSON("pu/" + uid.replace(/[^\w-]/g, ""), { sub }); else await store.delete("pu/" + uid.replace(/[^\w-]/g, "")); }
     return json({ ok: true });
   }
-  if (b.action === "unsubscribe") { await store.delete(id); return json({ ok: true }); }
+  if (b.action === "unsubscribe") { await store.delete(id); if (b.uid) await store.delete("pu/" + String(b.uid).replace(/[^\w-]/g, "").slice(0, 40)); return json({ ok: true }); }
   if (b.action === "test") {
     webpush.setVapidDetails(process.env.URL || "https://arraigandonos.netlify.app", k.publicKey, k.privateKey);
     try {
