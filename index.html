@@ -104,7 +104,7 @@ a{color:var(--accent)}
 .hero h1{color:var(--ink)}
 .hero>*{position:relative}
 .hero .back{color:var(--ink)}
-.hero-art{position:absolute;right:-6px;top:26px;width:130px;height:130px;opacity:.5;pointer-events:none;filter:drop-shadow(0 0 0 var(--k))}
+.hero-art{position:absolute;right:-6px;top:26px;width:110px;height:110px;opacity:.32;pointer-events:none;filter:drop-shadow(0 0 0 var(--k))}
 .hero-art svg *{fill:color-mix(in srgb,var(--k) 55%,transparent)!important;stroke:color-mix(in srgb,var(--k) 55%,transparent)!important}
 .hero-art svg text{stroke:none!important}
 .hero .eyebrow{color:color-mix(in srgb,var(--k) 70%,var(--ink));margin-top:18px}
@@ -1572,7 +1572,7 @@ function draw(top){setTimeout(()=>{renderNav();if(stack[stack.length-1]===SEC.ta
 function refresh(){if(stack.length)draw(false);renderHome();}
 function hero(k,eyebrow,title,vid,vref,vtxt){
   const txt=vtxt||(vid?vText(vid):'');
-  return '<div class="hero" style="--k:var('+KC[k]+')"><button class="back" data-a="back">'+I.back+(stack.length>1?'Atrás':'Árbol')+'</button><div class="hero-art">'+ART[k]+'</div><div class="eyebrow">'+eyebrow+'</div><h1>'+title+'</h1>'+(txt?'<p class="hero-v">'+esc(txt)+'</p><p class="hero-ref">'+(vref||VERSES[vid].ref)+(vid?' · '+vLabel(vid):' · RV1909')+'</p>'+explain(vref||VERSES[vid].ref,txt,false):'')+'</div>';
+  return '<div class="hero" style="--k:var('+KC[k]+')"><button class="back" data-a="back">'+I.back+(stack.length>1?'Atrás':'Inicio')+'</button><div class="hero-art">'+ART[k]+'</div><div class="eyebrow">'+eyebrow+'</div><h1>'+title+'</h1>'+(txt?'<p class="hero-v">'+esc(txt)+'</p><p class="hero-ref">'+(vref||VERSES[vid].ref)+(vid?' · '+vLabel(vid):' · RV1909')+'</p>'+explain(vref||VERSES[vid].ref,txt,false):'')+'</div>';
 }
 const bar=(label,right)=>'<div class="bar-top"><button class="back" data-a="back">'+I.back+label+'</button><span class="eyebrow">'+(right||'')+'</span></div>';
 const rowBtn=(a,id,k,done,t,s)=>'<button class="row" style="--k:var('+KC[k]+')" data-a="'+a+'" data-id="'+id+'"><span class="tick'+(done?' done':'')+'">'+(done?I.check:'')+'</span><span class="row-b"><span class="row-t">'+t+'</span><br><span class="small muted">'+s+'</span></span>'+I.chev+'</button>';
@@ -1776,7 +1776,7 @@ function sFund(){
 function sLesson(id){return function(){
   const isB=LESSONS2.some(x=>x.id===id),LL=isB?LESSONS2:LESSONS,i=LL.findIndex(l=>l.id===id),l=LL[i],done=!!S.lessons[id];
   const vt=l.vt||VERSES[l.v].t,mv=VERSES[l.v],inMem=!!S.verses[l.v];
-  return `<div class="hero" style="--k:var(--c-fund)"><button class="back" data-a="back">${I.back}${stack.length>1?'Atrás':'Árbol'}</button><div class="hero-art">${ART.fund}</div><div class="eyebrow">${isB?'Crecer en Cristo':'Fundamentos'} · Lección ${i+1} de ${LL.length} · ${l.s}</div><h1>${l.t}</h1><p class="hero-v">${esc(vt)}</p><p class="hero-ref">${l.ref} · RV1909 · <a href="${bg(l.ref)}" target="_blank" rel="noopener" style="color:inherit">Leer en ${S.version}</a></p>${explain(l.ref,vt,false)}</div>
+  return `<div class="hero" style="--k:var(--c-fund)"><button class="back" data-a="back">${I.back}${stack.length>1?'Atrás':'Inicio'}</button><div class="hero-art">${ART.fund}</div><div class="eyebrow">${isB?'Crecer en Cristo':'Fundamentos'} · Lección ${i+1} de ${LL.length} · ${l.s}</div><h1>${l.t}</h1><p class="hero-v">${esc(vt)}</p><p class="hero-ref">${l.ref} · RV1909 · <a href="${bg(l.ref)}" target="_blank" rel="noopener" style="color:inherit">Leer en ${S.version}</a></p>${explain(l.ref,vt,false)}</div>
   <div class="prose" style="--k:var(--c-fund)">
    ${l.body.map(p=>'<p>'+esc(p)+'</p>').join('')}
    <div><div class="eyebrow" style="margin-bottom:8px">${done?'Palabras descubiertas':'Descubres'}</div><div class="wchips">${l.words.map(w=>{const W=WORDS[w];return '<button class="wchip" data-a="word" data-id="'+w+'"><b class="'+(W.heb?'heb':'')+'">'+W.o+'</b><span class="small">'+W.tr+' · '+esc(W.m.split(':')[0])+'</span></button>';}).join('')}</div></div>
