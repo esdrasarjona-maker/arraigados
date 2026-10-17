@@ -597,6 +597,17 @@ u.arc{text-decoration:underline dotted color-mix(in srgb,var(--muted) 70%,transp
 .hero-v{font-size:.98rem!important}
 .rd-acts{display:flex;gap:6px}.rd-acts .iconbtn svg{width:20px;height:20px}
 #toast .tgem{background:linear-gradient(160deg,#9BD18A,#3E8E4F)!important;border-radius:50%!important;width:18px!important;height:18px!important}
+/* La Biblia, siempre a mano en el inicio */
+.biblecard{display:flex;align-items:center;gap:14px;margin:0 0 14px;padding:14px 16px;border-radius:22px;background:color-mix(in srgb,var(--c-palabra) 10%,var(--surface));box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--c-palabra) 20%,transparent);--k:var(--c-palabra)}
+.bc-ic{flex:none;width:48px;height:48px;border-radius:15px;display:grid;place-items:center;background:linear-gradient(160deg,var(--c-palabra),color-mix(in srgb,var(--c-palabra) 70%,#000))}
+.bc-ic svg{width:26px;height:26px;stroke:#fff}
+.bc-b{flex:1;min-width:0}.bc-e{font-size:.78rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--c-palabra)}
+.bc-t{font-family:var(--f-display);font-size:1.2rem;font-weight:600;margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bc-s{font-size:.85rem;color:var(--muted)}
+/* Tamaños mínimos cómodos en el móvil */
+.sess-steps span{font-size:.8rem}.wd{font-size:.72rem}.rumia-r{font-size:.78rem}.rumia-mini{font-size:.85rem}
+.tile>span:last-of-type{font-size:.84rem}.gtile span:last-child{font-size:.82rem}.drow-b span{font-size:.88rem}
+.small{font-size:.9rem}
 .today-h .mini-n{background:none;border:0;padding:0;cursor:pointer}
 </style>
 
@@ -1684,6 +1695,7 @@ function renderHome(){
   ${welcomeBack()}
   ${rumiaCard()}
   ${sessCard()}
+  ${bibleCard()}
   <section class="plate${PP.dark?' night':''}" style="background:${PP.bg};--pi:${PP.ink};--pg:${PP.gold};--pm:${PP.mute};--pl:${PP.line}">
     ${plate()}
   </section>
@@ -2915,6 +2927,13 @@ function sessCard(){
   return `<button class="sess" data-a="hoy-start"><div class="sess-top"><div><div class="sess-e">${all?'Hoy ya has estado con Dios':'Tu tiempo con Dios · unos 10 min'}</div><div class="sess-t">${all?'Repetir o seguir leyendo':resume?'Continuar donde lo dejaste':n?'Seguir con lo de hoy':'Empezar'}</div></div><span class="sess-play">${all?I.check:'<svg class="ic" viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor" stroke="none"/></svg>'}</span></div>
    <div class="sess-steps">${steps.map(s=>'<span class="'+(hd[s.id]?'ok':'')+'"><i>'+(hd[s.id]?I.check:I[HK[s.k]]||'')+'</i>'+s.lab+'</span>').join('')}</div>
    <div class="sess-foot"><span>${st?st+(st===1?' día':' días')+' de constancia':totalActive()?'Hoy es un buen día para volver':'Tu primer día empieza hoy'}</span>${weekStrip()}</div></button>`;
+}
+function bibleCard(){
+  const q=readToday(),ref=todayRead(),lr=S.lastRead,d=S.days[today()]||{};
+  const title=ref?(d.read?'Siguiente: '+esc(ref):esc(ref)):lr?esc(BOOKS[lr.b][0])+' '+lr.c:'Empieza por Juan';
+  const sub=ref?(d.read?'Ya has leído hoy. ¡Bien!':'Tu lectura de hoy · '+esc(curPlan().t)):hasPlan()?'Plan completado':'Elige un plan o abre cualquier libro';
+  return '<section class="biblecard"><div class="bc-ic">'+I.book+'</div><div class="bc-b"><div class="bc-e">La Biblia</div><div class="bc-t">'+title+'</div><div class="bc-s">'+sub+'</div></div>'+
+   '<div class="bc-a">'+(q&&q.length?'<button class="btn sm" data-a="rd-open">Leer</button>':'<button class="btn sm" data-a="go" data-id="'+(hasPlan()||lr?'libros':'palabra')+'">Abrir</button>')+'</div></section>';
 }
 function hbar(){return '<div class="hbar"><div class="hseg">'+HSTEPS.map((s,i)=>'<i class="'+(i<hStep||hStep===HSTEPS.length-1?'on':i===hStep?'cur':'')+'"></i>').join('')+'</div><button class="iconbtn hx" data-a="h-close" aria-label="Cerrar">'+LI('<path d="M18 6 6 18M6 6l12 12"/>')+'</button></div>';}
 function hfoot(main,skip){return '<div class="hfoot">'+main+(skip!==false?'<button class="linkbtn small hskip" data-a="h-next">'+(skip||'Saltar este paso')+'</button>':'')+'</div>';}
