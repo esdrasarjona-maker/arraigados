@@ -1230,7 +1230,7 @@ setPal();
 function gm(){return S.group?MEMBERS.filter(m=>m.group===S.group):[];}
 function discCount(){return DB?MEMBERS.filter(m=>m.mentor===UID).length:(S.disciples||[]).length;}
 function ann(nx,ny,side,ly,cap,val,go,pend){
-  const cw=cap.length*6.6+10,vw=val.length*8.1,w=Math.min(118,Math.max(cw,vw)+30),h=44;
+  const cw=cap.length*6.8+10,vw=val.length*8.6,w=Math.min(132,Math.max(cw,vw)+34),h=44;
   const x0=side==='l'?8:392-w,y0=ly-16,ax=side==='l'?x0+w:x0;
   let s='';
   if(nx!=null)s+='<path d="M'+f1(nx)+' '+f1(ny)+' L'+f1(ax)+' '+f1(y0+h/2)+'" stroke="'+CREAM+'" stroke-opacity=".3" stroke-width=".9" fill="none"/>';
@@ -1328,7 +1328,7 @@ function plate(){
   o+=ann(fx,fy,'l',fruLy,'FRUTO · ETAPA',STAGES[sg].n,'fruto',false);
   o+=ann(cx-4,oraY,'l',oraLy,'ORACIÓN',d.pray?'Hecha hoy':'Pendiente','oracion',!d.pray);
   o+=ann(kx,G-8,'l',pieLy,'PIEDRAS',sn+' de 12','piedras',false);
-  o+=ann(sx[0],G-10,'r',disLy,'DISCÍPULOS',nd?String(nd):'Haz discípulos','disc',false);
+  o+=ann(sx[0],G-10,'r',disLy,'DISCÍPULOS',nd?String(nd):'Invitar','disc',false);
   o+=ann(330,G+18,'r',palLy,'PALABRA',reading?(reading.length>16?reading.slice(0,15)+'…':reading):'Plan completo','palabra',!readDone);
   o+=ann(ends[2][0],ends[2][1],'l',raiLy,'RAÍCES',L+' de '+LESSONS.length,'fund',!!LESSONS.find(l=>!S.lessons[l.id])&&!d.lesson);
   o+='<g class="tag" data-a="go" data-id="roca" role="button" tabindex="0" aria-label="Cristo, la Roca"><rect x="96" y="430" width="208" height="26" rx="13" fill="'+PP.pill+'" stroke="'+PP.line+'"/><text x="200" y="447" text-anchor="middle" font-family="Figtree, system-ui, sans-serif" font-size="9.5" font-weight="800" letter-spacing="1.5" fill="'+GOLD+'">CRISTO, LA PIEDRA ANGULAR</text></g>';
