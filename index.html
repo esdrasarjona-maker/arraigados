@@ -639,6 +639,11 @@ u.arc{text-decoration:underline dotted color-mix(in srgb,var(--muted) 70%,transp
 #tour .tbtns{display:flex;align-items:center;gap:14px}
 #tour .trow{margin-top:14px}
 #toast{width:max-content;max-width:min(92vw,420px)!important;line-height:1.4}
+.sess-steps button{flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;font-size:.8rem;font-weight:700;color:#fff;background:none;border:0;padding:4px 0;opacity:.95}
+.sess-steps button i{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.16);box-shadow:inset 0 0 0 1px rgba(255,255,255,.28)}
+.sess-steps button i svg{width:18px;height:18px;stroke:#fff}
+.sess-steps button.ok i{background:#fff}.sess-steps button.ok i svg{stroke:var(--accent)}
+.sess-steps{margin-top:12px}
 .today-h .mini-n{background:none;border:0;padding:0;cursor:pointer}
 </style>
 
@@ -1730,8 +1735,7 @@ function renderHome(){
     ${plate()}
   </section>
   ${an&&Date.now()-(an.at||0)<7*864e5?`<div class="animo"><span class="avatar sm">${esc((an.fromName||'?').slice(0,1).toUpperCase())}</span><div style="min-width:0"><b>${esc(an.fromName||'Alguien')}: ${(ANK.find(k=>k[0]===an.kind)||[0,'🙏','Ora por ti'])[1]} ${esc((ANK.find(k=>k[0]===an.kind)||[0,'','ora por ti'])[2])}</b><p class="scripture" style="font-size:.95rem;margin-top:2px">${esc(VERSES[an.vid]?vText(an.vid):'')}</p><p class="ref" style="margin-top:2px">${VERSES[an.vid]?VERSES[an.vid].ref:''}</p></div></div>`:''}
-  ${todayTiles()}
-  ${next?`<button class="nextroot" data-a="lesson" data-id="${next.id}"><span class="n" style="${LESSONS2.includes(next)?'background:var(--c-memoria)':''}">${(LESSONS.indexOf(next)+1)||(LESSONS2.indexOf(next)+1)}</span><span style="min-width:0;flex:1"><span class="eyebrow">${LESSONS2.includes(next)?'Tu próxima rama · Crecer en Cristo':S.path==='creyente'?'Repasa tus raíces':'Tu próxima raíz'}</span><br><b>${next.t}</b><br><span class="muted small">${next.s} · ${next.ref}</span></span>${I.chev}</button>`:''}
+  ${next?`<button class="nextroot" data-a="lesson" data-id="${next.id}"><span class="n" style="${LESSONS2.includes(next)?'background:var(--c-memoria)':''}">${(LESSONS.indexOf(next)+1)||(LESSONS2.indexOf(next)+1)}</span><span style="min-width:0;flex:1"><span class="eyebrow">${LESSONS2.includes(next)?'Siguiente lección · Crecer en Cristo':S.path==='creyente'?'Repasa lo esencial':'Siguiente lección · Fundamentos'}</span><br><b>${next.t}</b><br><span class="muted small">${next.s} · ${next.ref}</span></span>${I.chev}</button>`:''}
   ${S.path==='buscando'?`<div class="card seek" style="margin-top:10px"><div class="eyebrow">Para empezar</div><h2 style="margin-top:6px">¿Quién es Jesús?</h2><p class="small" style="margin-top:6px">No hace falta tenerlo todo claro para empezar. Lee el evangelio en cuatro pasos, mira las razones para creer y lee a Jesús en Juan con tus propios ojos.</p><div class="btn-row" style="margin-top:12px"><button class="btn" style="--k:var(--c-roca)" data-a="go" data-id="roca">El evangelio</button><button class="btn soft" style="--k:var(--c-raz)" data-a="go" data-id="raz">Razones para creer</button></div></div>`:''}
   ${(()=>{const n=streakInfo().n;let h='';try{h=localStorage.getItem('arr.inv')||'';}catch(e){}return (n>=7||Object.keys(S.stones).length>=3)&&h!==String(Math.floor(n/7))?`<div class="card invite"><div class="eyebrow">Compartir es sembrar</div><h2 style="margin-top:6px">¿A quién le vendría bien Arraigados?</h2><p class="small muted" style="margin-top:4px">Llevas ${n} ${n===1?'día':'días'} buscando a Dios. Invita a alguien a caminar contigo: «Mejores son dos que uno» (Eclesiastés 4:9).</p><div class="btn-row" style="margin-top:10px"><button class="btn ghost sm" data-a="inv-hide" data-id="${Math.floor(n/7)}">Ahora no</button><button class="btn sm" data-a="go" data-id="compartir">Invitar</button></div></div>`:'';})()}
   ${groupCard()}
@@ -2962,8 +2966,8 @@ function sessCard(){
    <p class="td-v clamp">«${esc(vText(vid))}» <b>${V.ref}</b></p>
    <div class="td-mine">${mine?'<span>Tu respuesta:</span> '+esc(mine)+' <button class="linkbtn" data-a="rumia-edit">Cambiar</button>':'<button class="linkbtn" data-a="rumia-write">Responder</button>'}${canSpeak()?'<button class="linkbtn" data-a="speak" data-id="'+vid+'">Escuchar</button>':''}<button class="linkbtn" data-a="ref-open" data-id="${esc(V.ref)}">Contexto</button></div>
    <div id="rumiabox"></div>
-   <button class="sess" data-a="hoy-start"><span class="sess-play">${all?I.check:'<svg class="ic" viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor" stroke="none"/></svg>'}</span><span class="sess-b"><b>${all?'Hoy ya has estado con Dios':resume?'Continuar mi tiempo con Dios':'Empezar mi tiempo con Dios'}</b><span>${all?'Puedes repetir o seguir leyendo':'Leer, meditar, orar y memorizar · 10 min'}</span></span></button>
-   <div class="sess-steps">${steps.map(s=>'<span class="'+(hd[s.id]?'ok':'')+'"><i>'+(hd[s.id]?I.check:I[HK[s.k]]||'')+'</i>'+s.lab+'</span>').join('')}</div>
+   <button class="sess" data-a="hoy-start"><span class="sess-play">${all?I.check:'<svg class="ic" viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor" stroke="none"/></svg>'}</span><span class="sess-b"><b>${all?'Hoy ya has estado con Dios':resume?'Continuar mi tiempo con Dios':'Empezar mi tiempo con Dios'}</b><span>${all?'Puedes repetir o seguir leyendo':'4 pasos · unos 10 minutos'}</span></span></button>
+   <div class="sess-steps">${steps.map(s=>'<button class="'+(hd[s.id]?'ok':'')+'" data-a="go" data-id="'+({leer:'palabra',med:'meditar',orar:'oracion',mem:'memoria'}[s.id])+'" aria-label="'+s.lab+'"><i>'+(hd[s.id]?I.check:I[HK[s.k]]||'')+'</i>'+s.lab+'</button>').join('')}</div>
    <div class="sess-foot"><span>${st?st+(st===1?' día':' días')+' con Dios':totalActive()?'Hoy es un buen día para volver':'Tu primer día empieza hoy'}</span>${weekStrip()}</div>
   </section>`;
 }
@@ -3094,15 +3098,12 @@ function todayTiles(){
 function exploreTiles(){
   const ns=(S.sermons||[]).length;
   return '<div class="sect-t">Para seguir creciendo</div><div class="tgrid">'+[
-   ['fund','fund','sprout','Lecciones',lessonsDone()+'/'+LESSONS.length+' raíces · '+lessons2Done()+'/'+LESSONS2.length+' ramas'],
    ['notas','notas','mic','Predicaciones',ns?ns+(ns===1?' nota':' notas'):'Apunta lo que oyes'],
+   ['fund','fund','sprout','Lecciones',(lessonsDone()+lessons2Done())+' de '+(LESSONS.length+LESSONS2.length)],
    ['diario','fund','pen','Mi diario','Cómo vas creciendo'],
-   ['planes','palabra','book','Planes de lectura',hasPlan()?esc(curPlan().t):'Elige uno'],
    ['tarjetas','palabra','image','Imágenes','Versículos para estados'],
    ['roca','roca','cross','El evangelio','En cuatro pasos'],
-   ['cree','cree','scroll','Lo que creemos','Por gracia, por la fe'],
-   ['raz','raz','shield','Razones para creer','Historia y evidencias'],
-   ['dicc','dicc','langs','Diccionario',Object.keys(WORDS).length+' palabras originales']
+   ['mas','perfil','grid','Todo','Diccionario, razones…']
   ].map(x=>gtile(...x)).join('')+'</div>';
 }
 sMas=function(){
