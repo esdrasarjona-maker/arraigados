@@ -644,6 +644,9 @@ u.arc{text-decoration:underline dotted color-mix(in srgb,var(--muted) 70%,transp
 .sess-steps button i svg{width:18px;height:18px;stroke:#fff}
 .sess-steps button.ok i{background:#fff}.sess-steps button.ok i svg{stroke:var(--accent)}
 .sess-steps{margin-top:12px}
+.rd-ver{display:flex;gap:6px;margin:6px 0 2px}
+.rd-ver>*{flex:1;text-align:center;padding:8px 6px;border-radius:12px;font-weight:800;font-size:.86rem;text-decoration:none;background:var(--surface);color:var(--ink);box-shadow:inset 0 0 0 1px var(--line)}
+.rd-ver .on{background:var(--sk);color:#fff;box-shadow:none}
 .today-h .mini-n{background:none;border:0;padding:0;cursor:pointer}
 </style>
 
@@ -2669,6 +2672,7 @@ function sLeer(){
   const sz=S.rdSize||2;
   return '<div class="rd-top"><button class="back" data-a="back">'+I.back+'</button><button class="rd-pick" data-a="go" data-id="libros">'+esc(bk[0])+' '+c+' '+LI('<path d="m6 9 6 6 6-6"/>')+'</button><div class="rd-acts">'+(canSpeak()?'<button class="iconbtn" data-a="rd-speak" aria-label="Escuchar el capítulo">'+LI('<path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/>')+'</button>':'')+'<button class="iconbtn" data-a="rd-size" aria-label="Tamaño de letra">Aa</button></div></div>'+
    (q&&q.length>1&&RD.plan?'<div class="rd-q">'+q.map((x,i)=>'<span class="'+(i<qi?'ok':i===qi?'cur':'')+'">'+esc(BOOKS[x[0]][0])+' '+x[1]+'</span>').join('')+'</div>':'')+
+   '<div class="rd-ver"><span class="on">RV1909</span><a class="rd-ext" href="'+bg(rdRef(b,c),'RVR1960')+'" target="_blank" rel="noopener">RVR1960 ↗</a><a class="rd-ext" href="'+bg(rdRef(b,c),'NTV')+'" target="_blank" rel="noopener">NTV ↗</a></div>'+
    '<article class="rd-text sz'+sz+'" id="rdtext"><p class="muted small">Cargando…</p></article>'+
    '<div class="rd-src small muted">Reina-Valera 1909 · dominio público · <a href="'+bg(rdRef(b,c),S.version||'RVR1960')+'" target="_blank" rel="noopener">Leer en '+(S.version||'RVR1960')+' ↗</a></div>'+
    '<div class="rd-nav">'+(c>1||b>0?'<button class="btn ghost" data-a="rd-prev">'+I.back+'Anterior</button>':'<span></span>')+
