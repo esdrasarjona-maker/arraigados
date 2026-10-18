@@ -608,6 +608,37 @@ u.arc{text-decoration:underline dotted color-mix(in srgb,var(--muted) 70%,transp
 .sess-steps span{font-size:.8rem}.wd{font-size:.72rem}.rumia-r{font-size:.78rem}.rumia-mini{font-size:.85rem}
 .tile>span:last-of-type{font-size:.84rem}.gtile span:last-child{font-size:.82rem}.drow-b span{font-size:.88rem}
 .small{font-size:.9rem}
+/* Inicio: una sola tarjeta para el día */
+.top{position:sticky;top:0;z-index:30;margin:0 -14px;padding:calc(8px + env(safe-area-inset-top,0px)) 14px 8px;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.greet{display:none}
+.daycard{margin:6px 0 14px;padding:18px 18px 14px;border-radius:26px;color:#fff;background:radial-gradient(110% 90% at 100% 0%,color-mix(in srgb,var(--accent) 55%,#fff) 0,transparent 55%),linear-gradient(155deg,var(--accent),color-mix(in srgb,var(--accent) 60%,#000));box-shadow:0 18px 40px -22px color-mix(in srgb,var(--accent) 80%,#000)}
+.td-e{display:flex;align-items:center;gap:6px;font-size:.8rem;font-weight:700;opacity:.9;text-transform:none}
+.td-e svg{width:16px;height:16px}
+.td-q{font-family:var(--f-display);font-size:1.32rem;font-weight:600;line-height:1.3;margin-top:8px}
+.td-v{font-family:var(--f-display);font-style:italic;font-size:.98rem;line-height:1.5;margin-top:8px;opacity:.9;-webkit-line-clamp:2!important}
+.td-v b{font-family:var(--f-ui);font-style:normal;font-size:.75rem;letter-spacing:.05em;text-transform:uppercase;opacity:.85}
+.td-mine{display:flex;flex-wrap:wrap;align-items:center;gap:6px 16px;margin-top:10px;font-size:.92rem}
+.td-mine span{opacity:.8}
+.daycard .linkbtn{color:#fff;text-decoration:underline;text-underline-offset:3px;font-weight:700}
+.daycard #rumiabox textarea{background:rgba(255,255,255,.95);color:#1d2a20}
+.daycard #rumiabox .consent{background:rgba(255,255,255,.15);color:#fff}
+.daycard #rumiabox .btn.ghost{color:#fff;border-color:rgba(255,255,255,.5)}
+.daycard #rumiabox .btn:not(.ghost){background:#fff;color:var(--accent)}
+.daycard .sess{display:flex;align-items:center;gap:12px;width:100%;margin:14px 0 0;padding:10px 12px;border:0;border-radius:18px;background:rgba(255,255,255,.16);box-shadow:inset 0 0 0 1px rgba(255,255,255,.25);color:#fff;text-align:left}
+.daycard .sess-play{width:46px;height:46px}
+.sess-b{display:flex;flex-direction:column;min-width:0}.sess-b b{font-size:1.02rem}.sess-b span{font-size:.84rem;opacity:.85}
+.h-q{margin-top:14px;font-size:1rem;line-height:1.5}
+/* Guía: tarjeta anclada abajo (o arriba si señala la barra) */
+#tour .tcard{left:12px!important;right:12px;transform:none!important;width:auto!important;max-width:520px;margin:0 auto;padding:16px 18px}
+#tour .tcard.at-bottom{bottom:calc(84px + env(safe-area-inset-bottom,0px));top:auto!important}
+#tour .tcard.at-top{top:calc(16px + env(safe-area-inset-top,0px));bottom:auto!important}
+#tour .tc-h{display:flex;align-items:center;gap:10px}
+#tour .tc-h h3{margin:0;font-size:1.2rem}
+#tour .tic{width:38px;height:38px;flex:none}
+#tour .tcard p{font-size:1rem}
+#tour .tbtns{display:flex;align-items:center;gap:14px}
+#tour .trow{margin-top:14px}
+#toast{width:max-content;max-width:min(92vw,420px)!important;line-height:1.4}
 .today-h .mini-n{background:none;border:0;padding:0;cursor:pointer}
 </style>
 
@@ -1693,7 +1724,6 @@ function renderHome(){
   ${installCard()}
   <p class="greet">${greeting()}${S.name?', '+esc(S.name):''}</p>
   ${welcomeBack()}
-  ${rumiaCard()}
   ${sessCard()}
   ${bibleCard()}
   <section class="plate${PP.dark?' night':''}" style="background:${PP.bg};--pi:${PP.ink};--pg:${PP.gold};--pm:${PP.mute};--pl:${PP.line}">
@@ -1850,7 +1880,7 @@ function sPalabra(){
 let goalF='todos';
 function planChooser(){
   const ids=recPlans().filter(id=>PLANES.find(p=>p.id===id));
-  return '<div class="card chooser"><div class="eyebrow">Paso 1</div><h2 style="margin-top:6px">Elige tu plan de lectura</h2><p class="small muted" style="margin-top:6px">Un plan te dice qué leer cada día. Empieza por uno corto: lo importante es la constancia, no la cantidad.</p>'+
+  return '<div class="card chooser" style="--k:var(--c-palabra)"><div class="eyebrow">Paso 1</div><h2 style="margin-top:6px">Elige tu plan de lectura</h2><p class="small muted" style="margin-top:6px">Un plan te dice qué leer cada día. Empieza por uno corto: lo importante es la constancia, no la cantidad.</p>'+
    ids.map(id=>{const p=PLANES.find(x=>x.id===id),pd=Math.round(p.days.reduce((a,x)=>a+x.length,0)/p.days.length*10)/10;return '<button class="pickplan" data-a="setplan" data-id="'+p.id+'"><span class="pp-n">'+p.days.length+'<small>días</small></span><span class="drow-b"><b>'+esc(p.t)+'</b><span>'+String(pd).replace('.',',')+(pd===1?' capítulo':' capítulos')+' al día</span></span><span class="pp-go">Empezar</span></button>';}).join('')+
    '<button class="btn ghost full" style="margin-top:12px" data-a="go" data-id="planes">Ver los '+PLANES.length+' planes</button></div>';
 }
@@ -1867,7 +1897,7 @@ function sPlanes(){
 function sMeditar(){
   const ps=pasajeHoy(),d=S.days[today()]||{};
   return hero('med','Meditación',ps[1],null,ps[0],ps[2])+`<div class="stack" style="--k:var(--c-med)">
-   <a class="btn full" href="${bg(ps[0])}" target="_blank" rel="noopener">Leer ${esc(ps[0])} · ${S.version||'RVR1960'}</a>
+   <a class="btn full" href="${bg(ps[0])}" target="_blank" rel="noopener">Leer ${esc(ps[0])}</a>
    <div class="card"><div class="eyebrow">Cuatro pasos, sin prisa</div>
     <div class="steps4">
      <div><b>1 · Lee</b><p>Lee el pasaje despacio, dos veces. La segunda, en voz alta si puedes.</p></div>
@@ -2028,12 +2058,12 @@ function wordList(){
   const norm=s=>String(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
   const ids=Object.keys(WORDS).filter(k=>{const W=WORDS[k];return(dlang==='Todas'||W.lang===dlang)&&(dcat==='Todas'||W.c===dcat)&&(!q||norm(W.tr+' '+W.m+' '+W.d+' '+W.ref+' '+W.o).includes(q));});
   if(!ids.length)return '<p class="muted small" style="grid-column:1/-1">No hay palabras con esa búsqueda.</p>';
-  return ids.map(k=>{const W=WORDS[k];return '<button class="word" data-a="word" data-id="'+k+'">'+(disc.has(k)?'<span class="star" title="Descubierta en tu senda"></span>':'')+'<span class="word-o'+(W.heb?' heb':'')+'">'+W.o+'</span><span class="word-tr">'+W.tr+'</span><span class="word-m">'+esc(W.m)+'</span></button>';}).join('');
+  return ids.map(k=>{const W=WORDS[k];return '<button class="word" data-a="word" data-id="'+k+'">'+(disc.has(k)?'<span class="star" title="Descubierta en tus lecciones"></span>':'')+'<span class="word-o'+(W.heb?' heb':'')+'">'+W.o+'</span><span class="word-tr">'+W.tr+'</span><span class="word-m">'+esc(W.m)+'</span></button>';}).join('');
 }
 function sDicc(){
   const n=Object.keys(WORDS).length,disc=unlockedWords().size;
   return hero('dicc','Diccionario','Las palabras del texto original',null,'Juan 1:1','En el principio era el Verbo, y el Verbo era con Dios, y el Verbo era Dios.')+`<div class="stack" style="--k:var(--c-dicc)">
-   <div class="card"><p class="small">${n} palabras del hebreo, el arameo y el griego que nuestras traducciones no siempre pueden captar del todo. Las que llevan punto las has descubierto en tu senda (${disc}).</p>
+   <div class="card"><p class="small">${n} palabras del hebreo, el arameo y el griego que nuestras traducciones no siempre pueden captar del todo. Las que llevan punto las has descubierto en tus lecciones (${disc}).</p>
     <input type="search" id="dsearch" style="margin-top:12px" placeholder="Busca: gracia, amor, ἀγάπη, Juan 3…" value="${esc(dq)}" aria-label="Buscar palabra">
     <div class="chips" style="margin-top:10px">${['Todas','Hebreo','Arameo','Griego'].map(l=>'<button class="chip'+(dlang===l?' on':'')+'" data-a="dlang" data-id="'+l+'">'+l+'</button>').join('')}</div>
     <div class="chips" style="margin-top:6px">${['Todas','Dios','Salvación','Vida cristiana','Carácter','Oración y adoración','Iglesia y misión'].map(l=>'<button class="chip'+(dcat===l?' on':'')+'" data-a="dcat" data-id="'+l+'">'+(l==='Todas'?'Todos los temas':l)+'</button>').join('')}</div></div>
@@ -2200,7 +2230,7 @@ function sPerfil(){
 const chipRefs=(refs,k)=>'<div class="chips" style="margin-top:12px">'+refs.map(r=>'<a class="chip" style="text-decoration:none;color:var(--ink)" href="'+bg(r)+'" target="_blank" rel="noopener">'+r+'</a>').join('')+'</div>';
 function sCreemos(){
   return hero('cree','Lo que creemos','Por gracia, por la fe, en Cristo','ef2-8')+`<div class="stack" style="--k:var(--c-cree)">
-   <div class="card"><p>Las verdades centrales de la fe cristiana, con la Biblia en la mano. Toca cada una para abrirla y cada referencia para leerla en ${BIBLES[S.version]}.</p></div>
+   <div class="card"><p>Las verdades centrales de la fe cristiana, con la Biblia en la mano. Toca cada una para abrirla y cada cita para leerla aquí mismo.</p></div>
    ${CREEMOS.map((c,i)=>`<details class="card"${i===0?' open':''}><summary style="cursor:pointer;font-family:var(--f-display);font-size:1.15rem;font-weight:600;list-style-position:outside">${c.t}</summary>
      <p style="margin-top:10px">${esc(c.s)}</p>${c.v?'<div class="quote" style="margin-top:12px"><p class="scripture" style="font-size:1rem">'+esc(VERSES[c.v].t)+'</p><p class="ref">'+VERSES[c.v].ref+' · RV1909</p>'+explain(VERSES[c.v].ref,VERSES[c.v].t)+'</div>':''}${chipRefs(c.refs)}</details>`).join('')}
    <p class="small muted center">Resumen de la fe cristiana evangélica histórica. Repásalo con tu iglesia y tus pastores.</p></div>`;
@@ -2922,11 +2952,20 @@ function weekStrip(){
   return '<div class="wstrip">'+h+'</div>';
 }
 function sessCard(){
+  // Una sola tarjeta para el día: la Palabra para rumiar + el botón para empezar
   const hd=hoyDone(),steps=HSTEPS.slice(1,5),n=steps.filter(s=>hd[s.id]).length,resume=S.hoy&&S.hoy.d===today()&&S.hoy.step>0&&S.hoy.step<5;
-  const all=n===4,st=streakInfo().n;
-  return `<button class="sess" data-a="hoy-start"><div class="sess-top"><div><div class="sess-e">${all?'Hoy ya has estado con Dios':'Tu tiempo con Dios · unos 10 min'}</div><div class="sess-t">${all?'Repetir o seguir leyendo':resume?'Continuar donde lo dejaste':n?'Seguir con lo de hoy':'Empezar'}</div></div><span class="sess-play">${all?I.check:'<svg class="ic" viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor" stroke="none"/></svg>'}</span></div>
+  const all=n===4,st=streakInfo().n,[vid,q]=rumiaHoy(),V=VERSES[vid],mine=(S.rumia||{})[today()];
+  const dateS=new Intl.DateTimeFormat('es-ES',{weekday:'long',day:'numeric',month:'long'}).format(new Date());
+  return `<section class="daycard">
+   <div class="td-e">${LI('<path d="M12 3a6 6 0 0 0-6 6c0 2.2 1.2 4.1 3 5.2V17h6v-2.8c1.8-1.1 3-3 3-5.2a6 6 0 0 0-6-6zM9.5 21h5"/>')}Para rumiar hoy · ${dateS}</div>
+   <p class="td-q">${esc(q)}</p>
+   <p class="td-v clamp">«${esc(vText(vid))}» <b>${V.ref}</b></p>
+   <div class="td-mine">${mine?'<span>Tu respuesta:</span> '+esc(mine)+' <button class="linkbtn" data-a="rumia-edit">Cambiar</button>':'<button class="linkbtn" data-a="rumia-write">Responder</button>'}${canSpeak()?'<button class="linkbtn" data-a="speak" data-id="'+vid+'">Escuchar</button>':''}<button class="linkbtn" data-a="ref-open" data-id="${esc(V.ref)}">Contexto</button></div>
+   <div id="rumiabox"></div>
+   <button class="sess" data-a="hoy-start"><span class="sess-play">${all?I.check:'<svg class="ic" viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor" stroke="none"/></svg>'}</span><span class="sess-b"><b>${all?'Hoy ya has estado con Dios':resume?'Continuar mi tiempo con Dios':'Empezar mi tiempo con Dios'}</b><span>${all?'Puedes repetir o seguir leyendo':'Leer, meditar, orar y memorizar · 10 min'}</span></span></button>
    <div class="sess-steps">${steps.map(s=>'<span class="'+(hd[s.id]?'ok':'')+'"><i>'+(hd[s.id]?I.check:I[HK[s.k]]||'')+'</i>'+s.lab+'</span>').join('')}</div>
-   <div class="sess-foot"><span>${st?st+(st===1?' día':' días')+' de constancia':totalActive()?'Hoy es un buen día para volver':'Tu primer día empieza hoy'}</span>${weekStrip()}</div></button>`;
+   <div class="sess-foot"><span>${st?st+(st===1?' día':' días')+' con Dios':totalActive()?'Hoy es un buen día para volver':'Tu primer día empieza hoy'}</span>${weekStrip()}</div>
+  </section>`;
 }
 function bibleCard(){
   const q=readToday(),ref=todayRead(),lr=S.lastRead,d=S.days[today()]||{};
@@ -2940,9 +2979,10 @@ function hfoot(main,skip){return '<div class="hfoot">'+main+(skip!==false?'<butt
 function sHoy(){
   const st=HSTEPS[hStep],d=S.days[today()]||{};let b='';
   const head=(eb,t)=>'<div class="h-eb">Paso '+(hStep+1)+' de 6 · '+eb+'</div><h1 class="h-t">'+t+'</h1>';
-  if(st.id==='verso'){const vid=verseOfDay(),V=VERSES[vid];
-    b=head('Aquiétate','Habla, Señor')+'<p class="h-p">Respira hondo. Deja el móvil en silencio unos minutos y pídele a Dios que te hable por su Palabra.</p>'+
-     '<div class="card h-verse"><p class="scripture">'+esc(vText(vid))+'</p><p class="ref">'+V.ref+' · '+vLabel(vid)+'</p>'+(canSpeak()?'<button class="btn soft sm" style="margin-top:10px" data-a="speak" data-id="'+vid+'">Escuchar</button>':'')+explain(V.ref,vText(vid),false)+'</div>'+
+  if(st.id==='verso'){const [vid,q]=rumiaHoy(),V=VERSES[vid];
+    b=head('Aquiétate','Habla, Señor')+'<p class="h-p">Respira hondo y pídele a Dios que te hable por su Palabra.</p>'+
+     '<div class="card h-verse"><p class="scripture">'+esc(vText(vid))+'</p><p class="ref">'+V.ref+' · '+vLabel(vid)+'</p>'+(canSpeak()?'<button class="btn soft sm" style="margin-top:10px" data-a="speak" data-id="'+vid+'">Escuchar</button>':'')+'</div>'+
+     '<p class="h-q">Llévate esta pregunta hoy: <b>'+esc(q)+'</b></p>'+
      hfoot('<button class="btn full" data-a="h-next">Empezar</button>',false);}
   else if(st.id==='leer'){const ref=todayRead();
     if(!hasPlan())b=head('Leer','Elige qué leer')+planChooser()+hfoot('',null);
@@ -3032,7 +3072,7 @@ draw=function(top){
   const f=stack[stack.length-1],root=stack[0]&&stack[0].__id,own=f&&f.__id;
   const k=own==='hoy'?HSTEPS[hStep].k:(SECK[own]||SECK[root]||null);
   _draw(top);
-  document.body.classList.toggle('focus',own==='hoy');
+  document.body.classList.toggle('focus',own==='hoy'||f===sWelcome);
   const s=$('#sheet');if(s){if(k)s.style.setProperty('--sk','var('+KC[k]+')');else s.style.removeProperty('--sk');}
 };
 
@@ -3080,25 +3120,24 @@ sMas=function(){
 
 /* ================= GUÍA DE BIENVENIDA ================= */
 const TOUR=[
- {sel:'.plate',k:'memoria',ic:'sprout',t:'Este árbol eres tú',p:'Crece cada día que buscas a Dios. El sol es tu constancia, la lluvia tu oración, las hojas los versículos que guardas, el río la Palabra y las raíces tus lecciones. Y todo se apoya en la Roca: Cristo. Toca cualquier parte para entrar.'},
- {sel:'.sess',k:'memoria',ic:'sunrise',t:'Un solo botón',p:'Empieza aquí cada día: te guía paso a paso por la Palabra, la meditación, la oración y la memoria. Unos 10 minutos.'},
- {sel:'.rumia',k:'palabra',ic:'book',t:'Para rumiar hoy',p:'Una palabra y una pregunta para llevar contigo todo el día. Respóndela cuando quieras: tu grupo tiene la misma.'},
- {sel:'.tiles4',k:'palabra',ic:'book',t:'Tu rato con Dios',p:'Cuatro cuadritos para cada día: leer la Biblia, orar, meditar y memorizar. Con uno solo ya cuenta el día. Lo importante es la constancia.'},
- {sel:'.nav',k:'oracion',ic:'grid',t:'Abajo, lo principal',p:'Inicio, Biblia, Oración, Grupo y Más. Desde cualquier pantalla vuelves aquí con un toque.'},
- {sel:'.nav [data-id="disc"]',k:'disc',ic:'people',t:'Mejor acompañado',p:'Crea un grupo de 3 a 5 personas con un código. Os animáis, oráis unos por otros y veis cómo avanzáis. Sin rankings: todo suma.'},
- {sel:'.nav [data-id="mas"]',k:'notas',ic:'mic',t:'Y mucho más',p:'En «Más» tienes las notas de las predicaciones, las lecciones, tu diario, el diccionario, imágenes para estados y más.'}
+ {sel:'.daycard',k:'memoria',ic:'sunrise',t:'Tu día empieza aquí',p:'Una pregunta para rumiar hoy y un botón que te guía: leer, meditar, orar y memorizar.'},
+ {sel:'.biblecard',k:'palabra',ic:'book',t:'La Biblia, siempre a mano',p:'Tu lectura de hoy. Se lee aquí mismo, y puedes subrayar o guardar versículos.'},
+ {sel:'.plate',k:'memoria',ic:'sprout',t:'Tu árbol crece contigo',p:'Sol, lluvia, hojas, río y raíces: cada parte es algo de tu vida con Dios. Tócalas.'},
+ {sel:'.nav',k:'disc',ic:'people',t:'Todo, a un toque',p:'Biblia, Oración, tu Grupo (de 3 a 5 personas) y Más: lecciones, notas, diario…'}
 ];
 let tourI=0,TL=TOUR;
-const TINST={sel:'.install',k:'perfil',ic:'plus',t:'Tenla siempre a mano',p:'Instálala en tu pantalla de inicio: se abre como una app y funciona sin internet. Si alguna vez dijiste que no, desde «Más» puedes instalarla cuando quieras.',inst:1};
+const TINST={sel:'.install',k:'perfil',ic:'plus',t:'Instálala',p:'Tendrás el icono en tu pantalla y funcionará sin internet. También desde «Más».',inst:1};
 function tourOpen(){tourI=0;TL=TOUR.concat(typeof canInstall==='function'&&canInstall()&&isMobile()?[TINST]:[]);let el=document.getElementById('tour');if(!el){el=document.createElement('div');el.id='tour';el.setAttribute('role','dialog');el.setAttribute('aria-modal','true');document.body.appendChild(el);}tourShow();}
 function tourShow(){
-  const el=document.getElementById('tour');if(!el)return;const st=TL[tourI],tg=document.querySelector(st.sel);
-  if(tg&&!tg.closest('.nav'))tg.scrollIntoView({block:'center',behavior:'instant'});
-  const r=tg?tg.getBoundingClientRect():null,pad=6;
-  const below=r&&r.top+r.height/2<innerHeight/2;
-  el.innerHTML='<div class="spot'+(r?'':' none')+'"'+(r?' style="left:'+(r.left-pad)+'px;top:'+(r.top-pad)+'px;width:'+(r.width+pad*2)+'px;height:'+(r.height+pad*2)+'px"':'')+'></div>'+
-   '<div class="tcard" style="--k:var('+KC[st.k]+');'+(r?(below?'top:'+Math.min(innerHeight-260,r.bottom+16)+'px':'bottom:'+Math.max(16,innerHeight-r.top+16)+'px'):'top:30%')+'"><div class="tic">'+I[st.ic]+'</div><h3>'+st.t+'</h3><p>'+st.p+'</p>'+
-   '<div class="trow"><div class="tdots">'+TL.map((_,i)=>'<i class="'+(i===tourI?'on':'')+'"></i>').join('')+'</div><div class="btn-row" style="flex:none"><button class="btn ghost sm" data-a="tour-x">Saltar</button>'+(st.inst?'<button class="btn sm" data-a="tour-inst">Instalar</button>':'<button class="btn sm" data-a="tour-n">'+(tourI===TL.length-1?'Empezar':'Siguiente')+'</button>')+'</div></div></div>';
+  const el=document.getElementById('tour');if(!el)return;const st=TL[tourI],tg=document.querySelector(st.sel),isNav=tg&&getComputedStyle(tg).position==='fixed'||(tg&&tg.closest('.nav'));
+  if(tg&&!isNav){const r0=tg.getBoundingClientRect();window.scrollTo({top:Math.max(0,r0.top+scrollY-(document.querySelector('.top')?.offsetHeight||0)-12),behavior:'auto'});}
+  requestAnimationFrame(()=>{
+    const r=tg?tg.getBoundingClientRect():null,pad=6,maxH=innerHeight-230;
+    const sp=r?('left:'+(r.left-pad)+'px;top:'+Math.max(4,r.top-pad)+'px;width:'+(r.width+pad*2)+'px;height:'+Math.min(r.height+pad*2,maxH)+'px'):'';
+    el.innerHTML='<div class="spot'+(r?'':' none')+'"'+(r?' style="'+sp+'"':'')+'></div>'+
+     '<div class="tcard '+(isNav?'at-top':'at-bottom')+'" style="--k:var('+KC[st.k]+')"><div class="tc-h"><div class="tic">'+I[st.ic]+'</div><h3>'+st.t+'</h3></div><p>'+st.p+'</p>'+
+     '<div class="trow"><div class="tdots">'+TL.map((_,i)=>'<i class="'+(i===tourI?'on':'')+'"></i>').join('')+'</div><div class="tbtns"><button class="linkbtn" data-a="tour-x">'+(st.inst?'Ahora no':'Saltar')+'</button>'+(st.inst?'<button class="btn sm" data-a="tour-inst">Instalar</button>':'<button class="btn sm" data-a="tour-n">'+(tourI===TL.length-1?'Empezar':'Siguiente')+'</button>')+'</div></div></div>';
+  });
 }
 function tourClose(){const el=document.getElementById('tour');if(el)el.remove();S.tour=1;save();window.scrollTo({top:0,behavior:'smooth'});}
 window.addEventListener('resize',()=>{if(document.getElementById('tour'))tourShow();});
@@ -3107,7 +3146,7 @@ window.addEventListener('resize',()=>{if(document.getElementById('tour'))tourSho
 let curNote=null;
 function sNotas(){
   const L=(S.sermons||[]).slice().sort((a,b)=>(b.d||'').localeCompare(a.d||''));
-  return hero('notas','Predicaciones','Lo que Dios me habló en la iglesia',null,'Santiago 1:22','Mas sed hacedores de la palabra, y no tan solamente oidores, engañándoos á vosotros mismos.')+`<div class="stack" style="--k:var(--c-notas)">
+  return hero('notas','Predicaciones','Lo que Dios me habló en la iglesia',null,'Santiago 1:22','Mas sed hacedores de la palabra, y no tan solamente oidores, engañándoos a vosotros mismos.')+`<div class="stack" style="--k:var(--c-notas)">
    <button class="btn full" data-a="note-new">${I.plus}Nueva nota</button>
    ${L.length?'<div class="card">'+L.map(n=>'<button class="note-i" data-a="note-open" data-id="'+n.id+'"><b>'+esc(n.t||'Sin título')+'</b><span>'+fmtDate(n.d)+(n.who?' · '+esc(n.who):'')+(n.ref?' · '+esc(n.ref):'')+'</span></button>').join('')+'</div>'
    :'<div class="card"><h2>Apunta lo que oyes</h2><p class="small muted" style="margin-top:6px">Toma notas en el culto o en tu grupo: el pasaje, las ideas principales y lo que vas a poner en práctica. Se guardan en tu teléfono y puedes compartirlas con quien quieras.</p></div>'}
